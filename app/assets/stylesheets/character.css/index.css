@@ -1,0 +1,9 @@
+.character-image {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+.character-select {
+  text-align: center;
+}

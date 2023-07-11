@@ -1,0 +1,13 @@
+<%= render "shared/header" %>
+<%= form_with model: @conversation, url: character_select_conversation_path(@conversation), class: 'form', local: true do |f| %>
+  <div class="character-select">
+    <h2>Select a Character</h2>
+    <% @characters.each do |character| %>
+      <div>
+        <%= f.radio_button :character_id, character.id %>
+        <%= f.label :character_id, image_tag(character.image, alt: character.name), class: 'character-image' %>
+      </div>
+    <% end %>
+    <%= f.submit 'Next', class: 'form-submit' %>
+  </div>
+<% end %>
