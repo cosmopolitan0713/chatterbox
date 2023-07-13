@@ -1,23 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
 
   root to: "conversations#index"
   
-  resources :conversations, only: [:index, :new, :create] do
-    collection do
-      get 'character_select'
-    end
-    member do
-      get 'background_settings'
-      patch 'update_background'
-    end
-  end
-  
-  resources :users, only: [:show, :edit, :update]
+  resources :conversations, only: [:index, :new, :create] 
+  resources :users, only: [:show, :edit, :update, :destroy]
   resources :backgrounds, only: [:edit, :update]
   resources :characters, only: [:edit, :update]
 
-  get '/conversations/character_select', to: 'conversations#character_select', as: 'character_select_conversation'
-  get 'edit_character', to: 'users#edit_character'
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
 
 end

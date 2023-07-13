@@ -9,9 +9,9 @@
   <p>関心: <%= current_user.interests_name %></p>
   <p>キャラクター: <%= current_user.character_name %></p>
   <div class="edit-button-container">
-  <%= link_to '編集', edit_user_registration_path, class: 'edit-button' %>
-  
+    <%= link_to '編集', edit_user_path(current_user), class: 'edit-button' %>
   </div>
+  
   <div class="right-section">
     <div class="top-character-image">
       <%= image_tag @character.image_url, alt: @character.name %>

@@ -1,31 +1,38 @@
 class UsersController < ApplicationController
   
   def show
-    @user = current_user
-    @character = current_user.character
+    if user_signed_in?
+      @user = current_user
+      @character = current_user.character
+    else
+      redirect_to new_user_session_path, alert: "ログインしてください。"
+    end
   end
-  
+
   def edit
     @user = current_user
-  end 
-  
-  def edit_character
-    @character = current_user.character
   end
 
   def update
     @user = current_user
     if @user.update(user_params)
+      sign_in @user, bypass: true
       redirect_to @user, notice: 'ユーザー情報が更新されました。'
     else
       render :edit
     end
   end
   
+  def destroy
+    @user = current_user
+    sign_out @user
+    redirect_to root_path
+  end
+
   private
-  
+
   def user_params
-    params.require(:user).permit(:username, :email, :date_of_birth, :hobbies_id, :interests_id, :character_id)
+    params.require(:user).permit(:username, :email, :date_of_birth, :hobbies_id, :interests_id, :character_id, :password, :password_confirmation)
   end
 
 end

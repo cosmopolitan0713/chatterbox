@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-
+  
   def index
     @conversations = Conversation.all.includes(:user)
     @conversation = Conversation.new

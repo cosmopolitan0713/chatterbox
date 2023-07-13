@@ -98,7 +98,9 @@ html, body {
   padding: 20px 40px;
   
 }
-
+.user-chat {
+  display: flex;
+}
 .form-message {
   flex: 1;
   border: none;
@@ -123,21 +125,26 @@ html, body {
   justify-content:space-between;
   align-items: center;
   height: 100px;
+  margin: auto;
+}
+.login-items li {
+ border-bottom: solid 5px darkgreen; 
 }
 
 .sign-up,
 .login {
-  height: 500px;
-  width: 800px;
-  background-color:aqua;
+  height: 400px;
+  width: 600px;
+  background-color:aquamarine;
+  border: solid 5px darkgreen;
   border-radius: 50px;
-  padding: 200px;
   text-decoration: none;
   color: white;
-  font-size: 16px;
+  font-weight: 800;
+  font-size: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 10px;
-  margin-top: 100px;
+  margin: 0 25px 0 25px; 
 }
+

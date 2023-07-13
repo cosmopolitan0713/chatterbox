@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        username: "ユーザー名"
+  
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              invalid: "は無効です。文字と数字の両方を含めてください。"

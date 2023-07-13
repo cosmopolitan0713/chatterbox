@@ -42,5 +42,4 @@ class User < ApplicationRecord
     self.background_id = background.id
   end
   
-
 end
