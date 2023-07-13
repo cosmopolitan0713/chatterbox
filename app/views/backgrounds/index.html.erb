@@ -1,9 +1,15 @@
 <%= render "shared/header" %>
-<div class="container">
-  <% @backgrounds.each do |background| %>
-   <div class="background-item">
-      <%= link_to image_tag(background.image, class: 'background-image'), edit_background_path(background) %>
-      <p><%= background.name %></p>
-    </div>
-  <% end %>
-</div>
+<%= form_with model: @conversation, url: background_settings_conversation_path(@conversation), class: 'form', local: true do |f| %>
+  <div class="background-settings">
+    <h2>Background Settings</h2>
+    <% @backgrounds.each do |background| %>
+      <div>
+        <%= f.radio_button :background_id, background.id %>
+        <%= f.label :background_id do %>
+          <%= image_tag background.image, alt: background.name %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= f.submit 'Save', class: 'form-submit' %>
+  </div>
+<% end %>

@@ -4,7 +4,7 @@ class CreateConversations < ActiveRecord::Migration[7.0]
       t.text       :content,        null: false
       t.references :user,           null: false, foreign_key: true
       t.integer    :character_id,   null: false
-      t.integer    :background_id
+      t.integer    :background_id, default: 1
       t.timestamps
     end
   end

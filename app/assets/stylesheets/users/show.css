@@ -1,0 +1,56 @@
+.show-wrapper {
+  display: flex;
+}
+
+.left-section {
+  margin: 30px 0 30px 60px;
+  border: 2px solid forestgreen;
+  width: 50%;
+  height: 700px;
+  border-radius: 80px;
+  padding: 30px;
+}
+.left-section h1 {
+  text-align: center;
+  font-size: 30px;
+  border-bottom: 3px solid forestgreen;
+  margin-bottom: 20px;
+}
+
+.left-section p {
+  font-size: 25px;
+  border-bottom: 2px solid forestgreen;
+  margin-bottom: 20px;
+}
+/* 編集ボタン */
+.edit-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.edit-button {
+  height: 100px;
+  width: 200px;
+  font-size: 40px;
+  border-radius: 20px;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color:darkred;
+  color: #fff;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.edit-button:active {
+  background-color: #003380;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}

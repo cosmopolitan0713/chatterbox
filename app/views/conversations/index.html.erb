@@ -1,61 +1,54 @@
 <%= render "shared/header" %>
 <div class="wrapper">
   <% if user_signed_in? %>
-  <%# ログイン時のみ表示 %>
   <div class="side_bar">
     <div class="side_bar_top">
+    <%# 送信内容表示する %>
     <h1>会話履歴</h1>
-    <div class="message">
-    <div class="upper-message">
-      <div class="message-user">
-        Tom
-      </div>
-      <div class="message-date">
-        2020/3/31(Wed) 12:43:30
-      </div>
     </div>
-    <div class="lower-message">
-      <div class="message-content">
-        おはよう
+      <div class="side_bar_footer">
+        <%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete}, class: "logout" %>
       </div>
-    </div>
-  </div>
-    </div>
-    <div class="side_bar_footer">
-        <li><%= link_to current_user.username, "#", class: "user-username" %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete}, class: "logout" %></li>     
     </div>
   <% end %>
-  </div>
-  <%# <% end %>
   <div class="chat-wrapper">
-    <div class="main-chat">
-    <% if user_signed_in? %>
-    <div class="background-image">
-      <%= image_tag @background.image , class: "background-images"%>
-    </div>
-    <% end %>
-      <ul class='login-items'>
-      <% if !user_signed_in? %>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-      <% end %>
+    <div class="main-content">
+      <ul class="login-items">
+        <% if !user_signed_in? %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+        <% end %>
       </ul>
-      <div class="text">
-      <% @conversations.each do |conversation| %>
-        <%= conversation.content %>
-      <% end %>
+      <% if user_signed_in? %>
+      <div class="background-image">
+        <% if @background %>          
+          <%= image_tag @background.image_url, alt: "Background Image" %>
+        <% else %>
+          <%= image_tag Background.default_background.image_url, alt: "Default Background Image" %>
+        <% end %>
       </div>
+      <div class="main-chat">
+        <div class="text">
+          <% @conversations.each do |conversation| %>
+            <%= conversation.content %>
+          <% end %>
+        </div>
+      </div>
+      <div class="top-character-image">
+        <%= image_tag @character.image_url, alt: @character.name %>
+      </div>     
+    </div>  
+    <div class=user-form>  
+      <%= form_with model: @conversation, class: 'form', local: true do |f| %>
+        <div class="user-chat">
+          <div class="user-input">
+            <%= f.text_field :content, name: 'conversation[content]', class: 'form-message', placeholder: 'type a message' %>
+          </div>
+          <div>
+            <%= f.submit '送信', class: 'form-submit' %>
+          </div>
+        </div>    
+      <% end %>
     </div>
-    <%= form_with model: @conversation, class: 'form', local: true do |f| %>
-      <div class="user-chat">
-        <div class="user-input">
-          <%= f.text_field :content, name: 'conversation[content]',class: 'form-message', placeholder: 'type a message' %>
-        </div>
-        <div>
-          <%= f.submit '送信', class: 'form-submit' %>
-        </div>
-      </div>    
-    <% end %>
-  </div>  
-</div>    
+  <% end %>        
+</div>

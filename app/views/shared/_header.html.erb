@@ -4,9 +4,9 @@
   </div>
   <% if user_signed_in? %>
   <ul class="menu-lists">
-    <li><%=link_to "マイページ","/" , class:"menu-list" %>
-    <li><%=link_to "キャラクター選択", characters_path, class:"menu-list" %>
-    <li><%=link_to "背景設定",  backgrounds_path, class:"menu-list" %>
+    <li><%=link_to "マイページ",user_path(current_user) , class:"menu-list" %></li>
+    <li><%=link_to 'キャラクター選択', '/', class: 'menu-list' %></li>
+    <li><%=link_to "背景設定", '/', class:"menu-list" %></li>
   </ul>
   <% end %>
 </header>

@@ -1,0 +1,10 @@
+<h1>背景設定</h1>
+
+<%= form_with model: @conversation, url: update_background_conversation_path(@conversation), method: :patch do |f| %>
+  <div class="field">
+    <%= f.label :background_id, "背景選択" %>
+    <%= f.collection_select :background_id, Background.all, :id, :name, include_blank: "デフォルト" %>
+  </div>
+
+  <%= f.submit "保存" %>
+<% end %>

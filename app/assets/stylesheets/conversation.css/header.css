@@ -1,6 +1,7 @@
 .header {
+  width: 100%;
   height: 100px;
-  background-color: aqua;
+  background-color:bisque;
   padding: 10px 40px;
   display: flex;
   justify-content: space-between;
@@ -20,11 +21,11 @@
   display: flex;
 }
 .menu-list {
-  color:blue;
+  color:#FFFFFF;
   font-size: 20px;
   text-decoration: none;
   padding: 20px;
-  background-color: #FFFFFF;
+  background-color:lightsalmon;
   border-radius: 50px;
   line-height: 80px;
   margin-left: 10px;

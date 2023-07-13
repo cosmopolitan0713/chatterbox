@@ -1,0 +1,14 @@
+<%= render "shared/header" %>
+<h1>キャラクター設定</h1>
+
+<%= form_with model: @user, url: character_path, method: :patch, class: 'edit-character-form' do |f| %> 
+  <% @characters.each do |character| %>
+    <div class="character-item">
+      <%= image_tag character.image_url, alt: character.name, class: 'character-image' %>
+      <%= f.radio_button :character_id, character.id, id: "character_#{character.id}" %>
+      <%= character.name %>
+    </div>
+  <% end %>
+
+  <%= f.submit '保存', class: 'edit-character-button' %>
+<% end %>

@@ -1,9 +1,11 @@
 class Character < ActiveHash::Base
+
   self.data = [
-    { id: 1, name: 'ずんだもん', image: '1.png' },
-    { id: 2, name: 'ずんだもん', image: '2.png' },
-    { id: 3, name: 'ずんだもん', image: '3.png' },
-    { id: 4, name: 'めたん'    , image: 'metan1.png' }
+    { id: 1, name: 'ずんだもん', image: 'zunda1.png' },
+    { id: 2, name: 'めたん'    , image: 'metan1.png' },
+    { id: 3, name: 'つむぎ'    , image: 'tumugi1.png'},
+    { id: 4, name: '冥鳴'      , image: 'meimei1.png'},
+    { id: 5, name: 'いたこ'    , image: 'itako1.png' }
 
   ]
   def self.default
@@ -11,7 +13,7 @@ class Character < ActiveHash::Base
   end
   
   def image_url
-    image
+    ActionController::Base.helpers.asset_path(image)
   end
-
+  
 end

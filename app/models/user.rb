@@ -11,6 +11,7 @@ class User < ApplicationRecord
   belongs_to :interests
   belongs_to :character
 
+
   validates :username,     presence: true
   validates :character_id, presence: true
 
@@ -20,5 +21,26 @@ class User < ApplicationRecord
   with_options numericality: { other_than: 0, message: "を選択してください" } do
     validates :character_id
   end
+  
+  def hobbies_name
+    Hobbies.find_by(id: self.hobbies_id)&.name
+  end
+
+  def interests_name
+    Interests.find_by(id: self.interests_id)&.name
+  end
+
+  def character_name
+    Character.find_by(id: self.character_id)&.name
+  end
+
+  def background
+    Background.find_by(id: self.background_id)
+  end
+  
+  def background=(background)
+    self.background_id = background.id
+  end
+  
 
 end

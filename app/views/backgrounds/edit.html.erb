@@ -1,0 +1,11 @@
+<%= render "shared/header" %>
+<h1>背景設定</h1>
+<%= form_tag update_background_path, method: :put do %>
+  <% @backgrounds.each do |background| %>
+    <label>
+      <%= radio_button_tag :background_id, background.id, current_user.background_id == background.id %>
+      <%= image_tag background.image_path, alt: background.name %>
+    </label>
+  <% end %>
+  <%= submit_tag '保存' %>
+<% end %>
