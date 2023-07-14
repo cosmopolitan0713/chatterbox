@@ -1,22 +1,12 @@
 <%= render "shared/header" %>
+
 <div class="wrapper">
-  <% if user_signed_in? %>
-  <div class="side_bar">
-    <div class="side_bar_top">
-      <%# 送信内容表示する %>
-      <h1>会話履歴</h1>
-    </div>
-    <div class="side_bar_footer">
-      <%= form_with(url: destroy_user_session_path, method: :delete) do |f| %>
-        <%= f.submit 'ログアウト' %>
-      <% end %>
-    </div>
-  </div>
-  <% end %>
+<%= render "shared/side-bar" %>
+  
   
   <div class="chat-wrapper">
     <div class="main-content">
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
       <div class="background-image">
         <% if @background %>          
           <%= image_tag @background.image_url, alt: "Background Image" %>
@@ -26,9 +16,6 @@
       </div>
       <div class="main-chat">
         <div class="text">
-          <% @conversations.each do |conversation| %>
-            <%= conversation.content %>
-          <% end %>
         </div>
       </div>
       <div class="top-character-image">
@@ -41,17 +28,20 @@
           <div class="user-input">
             <%= f.text_field :content, name: 'conversation[content]', class: 'form-message', placeholder: 'type a message' %>
           </div>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :character_id, value: current_user.character.id %>
           <div>
             <%= f.submit '送信', class: 'form-submit' %>
           </div>
         </div>    
       <% end %>
     </div>
-  <% end %>
-  <ul class="login-items">
+    <% end %>
+    <ul class="login-items hidden">
     <% if !user_signed_in? %>
       <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
       <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
     <% end %>
-  </ul>        
-</div>
+  </ul>
+  </div>   
+</div>  

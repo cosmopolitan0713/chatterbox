@@ -15,7 +15,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_030543) do
     t.text "content", null: false
     t.bigint "user_id", null: false
     t.integer "character_id", null: false
-    t.integer "background_id", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_conversations_on_user_id"
@@ -32,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_030543) do
     t.integer "hobbies_id"
     t.integer "interests_id"
     t.integer "character_id", null: false
+    t.integer "background_id", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -10,11 +10,14 @@ class User < ApplicationRecord
   belongs_to :hobbies
   belongs_to :interests
   belongs_to :character
+  belongs_to :background
 
 
   validates :username,     presence: true
   validates :character_id, presence: true
-
+  validates :background_id, numericality: { allow_nil: true, other_than: 0, message: "を選択してください" }
+  
+  validates :password, presence: true, on: :update
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates_format_of :password, with: PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers'  
 
@@ -38,8 +41,8 @@ class User < ApplicationRecord
     Background.find_by(id: self.background_id)
   end
   
-  def background=(background)
-    self.background_id = background.id
+  def user_background
+    background || Background.default_background
   end
   
 end

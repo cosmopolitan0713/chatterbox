@@ -35,7 +35,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.date    :date_of_birth
       t.integer :hobbies_id
       t.integer :interests_id
-      t.integer :character_id,  null: false      
+      t.integer :character_id,  null: false
+      t.integer :background_id, default: 1      
       t.timestamps              null: false
     end
 

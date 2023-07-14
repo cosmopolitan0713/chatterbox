@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       sign_in @user, bypass: true
-      redirect_to @user, notice: 'ユーザー情報が更新されました。'
+      redirect_to '/conversations', notice: 'ユーザー情報が更新されました。'
     else
       render :edit
     end

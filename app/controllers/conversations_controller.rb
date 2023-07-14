@@ -4,6 +4,7 @@ class ConversationsController < ApplicationController
     @conversations = Conversation.all.includes(:user)
     @conversation = Conversation.new
     @character = current_user&.character || Character.find_by(id: current_user&.character_id)
+    @background = current_user&.user_background
   end
 
   def new
@@ -11,11 +12,11 @@ class ConversationsController < ApplicationController
   end
 
   def create
-  @conversation = Conversation.new(conversation_params)
+  @conversation = Conversation.new(conversations_params)
     if @conversation.save
       redirect_to root_path, notice: "保存に成功しました"
     else
-      render :new
+      render :index
     end
   end
 
@@ -37,24 +38,11 @@ class ConversationsController < ApplicationController
     @backgrounds = Background.all
   end
   
-  def update_background
-    @conversation = Conversation.find(params[:id])
-    if @conversation.update(conversation_params)
-      redirect_to conversations_path, notice: "背景が更新されました。"
-    else
-      flash.now[:alert] = "背景の更新に失敗しました。"
-      render :background_settings
-    end
-  end
 
   private
   
-  def conversation_params
-    paramu.require(:conversation).permit(:background_id)
-  end
-
   def conversations_params
-    params.require(:conversation).permit(:content, :user_id, :character_id, :background_id)
+    params.require(:conversation).permit(:content, :user_id, :character_id)
   end
 
 end

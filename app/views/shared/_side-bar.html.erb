@@ -1,3 +1,19 @@
+<% if user_signed_in? %>
   <div class="side_bar">
-    <h1>サイドバー</h1>
+    <div class="side_bar_top">      
+      <h1>会話履歴</h1>    
+      <div class="conversation-history">
+        <% @conversations.each do |conversation| %>
+          <div class="conversation">
+            <p><%= conversation.content %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="side_bar_footer">
+      <%= form_with(url: destroy_user_session_path, method: :delete) do |f| %>
+        <%= f.submit 'ログアウト', class: 'logout-button' %>
+      <% end %>
+    </div>
   </div>
+<% end %>

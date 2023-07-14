@@ -1,0 +1,52 @@
+.character-grid {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: repeat(3, 1fr); /* 3列に分割 */
+  gap: 10px; /* 列と列の間隔 */
+}
+
+.character-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border : 3px solid darkgreen;
+  border-radius: 10px;
+}
+
+.character-item img {
+  width: 180px; /* 画像の幅 */
+  height: auto; /* 高さは自動調整 */
+}
+
+.character-item .character-info {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.character-info h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.character-info p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+}
+
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
+.character-btn {
+  height: 50px;
+  width: 200px;
+  border-radius: 50px;
+  background-color:coral;
+  color:white;
+  border: 1px solid chocolate;
+} 

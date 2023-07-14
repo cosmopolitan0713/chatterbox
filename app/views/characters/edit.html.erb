@@ -1,14 +1,28 @@
 <%= render "shared/header" %>
-<h1>キャラクター設定</h1>
-
-<%= form_with model: @user, url: character_path, method: :patch, class: 'edit-character-form' do |f| %> 
-  <% @characters.each do |character| %>
-    <div class="character-item">
-      <%= image_tag character.image_url, alt: character.name, class: 'character-image' %>
-      <%= f.radio_button :character_id, character.id, id: "character_#{character.id}" %>
-      <%= character.name %>
+<%= form_with(model: current_user, url: user_path(current_user), method: :patch, class: 'character-form') do |f| %>
+  <div class="character-grid">
+    <% Character.all.each do |character| %>
+      <div class="character-item">
+        <div class="character-image">
+          <%= image_tag character.image_url, alt: character.name %>
+        </div>
+        <div class="character-description">
+          <h3><%= character.name %></h3>
+          <h2><%= character.profile1 %></h2>    
+        </div>  
+        <%= f.radio_button :character_id, character.id, checked: (character.id == current_user.character_id) %>
+      </div>
+      
+    <% end %>
+  </div>
+  <%= f.label 'パスワード' %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
-  <% end %>
-
-  <%= f.submit '保存', class: 'edit-character-button' %>
+      <div class="field">
+        <%= f.label 'パスワード(確認)' %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+  <div class="form-group">
+    <%= f.submit '更新する', class: 'character-btn' %>
+  </div>
 <% end %>

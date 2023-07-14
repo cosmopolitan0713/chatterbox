@@ -15,6 +15,9 @@
     <%= f.select :interests_id, Interests.all.map { |i| [i.name, i.id] } %></p>
     <p><%= f.label 'キャラクター' %>
     <%= f.select :character_id, Character.all.map { |c| [c.name, c.id] } %></p>
+    <p>
+    <%= f.label '背景' %>
+    <%= f.select :background_id, Background.all.map { |b| [b.name, b.id] } %></p>
     <div class="field">
       <%= f.label 'パスワード' %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "new-password" %>

@@ -14,7 +14,6 @@
     <%= f.select :interests_id, Interests.all.map { |i| [i.name, i.id] } %></p>
     <p><%= f.label 'キャラクター' %>
     <%= f.select :character_id, Character.all.map { |c| [c.name, c.id] } %></p>
-
     <div class="field">
       <%= f.label 'パスワード' %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "new-password" %>
@@ -23,6 +22,7 @@
         <%= f.label 'パスワード(確認)' %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
+    
     <div class="edit-button-container">
       <%= f.submit '更新する', class: 'edit-button' %>
     </div>

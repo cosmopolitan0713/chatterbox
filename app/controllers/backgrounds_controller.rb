@@ -1,21 +1,25 @@
 class BackgroundsController < ApplicationController
-  
-  def index
-    @background = Background.all
-  end
-    
+  before_action :authenticate_user!, only: [:edit, :update]
+
   def edit
-    @backgrounds = Background.all
-    @background = Background.find_by(id: @conversation.background_id)
+    @user = current_user
+    @backgrounds = Background.all    
   end
 
   def update
-    background = Background.find_by(id: params[:background_id])
-    if background
-      current_user.update(background_id: background.id)
-      redirect_to root_url, notice: '背景が更新されました。'
+    @user = current_user
+    if @user.update(user_params)
+      sign_in @user, bypass: true
+      redirect_to root_path, notice: '背景が更新されました。'
     else
-      redirect_to root_url, alert: '背景の更新に失敗しました。'
+      logger.debug @user.errors.inspect # ログ出力
+      render :edit
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:background_id, :password, :password_confirmation)
   end
 end

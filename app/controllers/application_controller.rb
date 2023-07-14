@@ -11,8 +11,20 @@ class ApplicationController < ActionController::Base
         :date_of_birth,
         :hobbies_id,
         :interests_id,
-        :character_id
+        :character_id,
+        :background_id
         ]
       )
+    devise_parameter_sanitizer.permit(
+        :account_update,
+         keys: [
+        :username,
+        :date_of_birth,
+        :hobbies_id,
+        :interests_id,
+        :character_id,
+        :background_id
+        ]
+      )  
   end
 end
