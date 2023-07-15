@@ -20,6 +20,6 @@ class BackgroundsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:background_id, :password, :password_confirmation)
+    params.require(:user).permit(:background_id)
   end
 end

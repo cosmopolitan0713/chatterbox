@@ -17,9 +17,8 @@ class User < ApplicationRecord
   validates :character_id, presence: true
   validates :background_id, numericality: { allow_nil: true, other_than: 0, message: "を選択してください" }
   
-  validates :password, presence: true, on: :update
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers'  
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers', on: :registration
 
   with_options numericality: { other_than: 0, message: "を選択してください" } do
     validates :character_id
@@ -44,5 +43,18 @@ class User < ApplicationRecord
   def user_background
     background || Background.default_background
   end
-  
+  # 追加
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end
+
 end
