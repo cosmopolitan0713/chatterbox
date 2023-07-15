@@ -13,6 +13,6 @@ class Character < ActiveHash::Base
   end
   
   def image_url
-    ActionController::Base.helpers.asset_path(image)
+    "/assets/#{image}"
   end
 end

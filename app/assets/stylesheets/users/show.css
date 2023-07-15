@@ -2,26 +2,6 @@
   display: flex;
 }
 
-.left-section {
-  margin: 30px 0 30px 60px;
-  border: 2px solid forestgreen;
-  width: 50%;
-  height: 700px;
-  border-radius: 80px;
-  padding: 30px;
-}
-.left-section h1 {
-  text-align: center;
-  font-size: 30px;
-  border-bottom: 3px solid forestgreen;
-  margin-bottom: 20px;
-}
-
-.left-section p {
-  font-size: 25px;
-  border-bottom: 2px solid forestgreen;
-  margin-bottom: 20px;
-}
 /* 編集ボタン */
 .edit-button-container {
   display: flex;

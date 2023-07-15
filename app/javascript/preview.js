@@ -1,26 +1,42 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const characterSelect = document.getElementById('character-select');
-  const characterPreview = document.getElementById('character-preview');
+// charactersの定義
+const characters = [
+  { id: 1, name: 'ずんだもん', image: 'zunda1.png', profile1: '何も考えていない' },
+  { id: 2, name: 'めたん', image: 'metan1.png', profile1: '何も考えていない' },
+  { id: 3, name: 'つむぎ', image: 'tumugi1.png', profile1: '何も考えていない' },
+  { id: 4, name: '冥鳴', image: 'meimei1.png', profile1: '何も考えていない' },
+  { id: 5, name: 'いたこ', image: 'itako1.png', profile1: '何も考えていない' }
+];
 
-  characterSelect.addEventListener('change', function() {
-    const characterId = this.value;
-    const request = new XMLHttpRequest();
+// イベントリスナー内のコードを関数に分割
+function handleCharacterSelectChange(event) {
+  const selectedCharacterId = event.target.value;
+  const previewContainer = document.getElementById('previews');
+  previewContainer.innerHTML = '';
+  
+  if (selectedCharacterId) {
+    const selectedCharacter = characters.find(character => character.id === Number(selectedCharacterId));
+    createPreview(selectedCharacter, previewContainer);
+  }
+}
 
-    request.addEventListener('load', function() {
-      if (request.status === 200) {
-        const response = JSON.parse(request.responseText);
-        const imageUrl = response.image;
-        characterPreview.innerHTML = `<img src="${imageUrl}" class="character-preview-image">`;
-      } else {
-        console.error('エラー:', request.status);
-      }
-    });
+// プレビューの作成
+function createPreview(character, container) {
+  const characterPreview = document.createElement('img');
+  characterPreview.src = '/assets/' + character.image;
+  characterPreview.alt = 'Character Preview';
+  characterPreview.classList.add('preview-image');
+  container.appendChild(characterPreview);
+}
 
-    request.addEventListener('error', function() {
-      console.error('リクエストエラー');
-    });
+// DOM要素のキャッシュ
+document.addEventListener('turbo:load', function() {
+  const characterSelect = document.getElementById('user_character_id');
+  const previewContainer = document.getElementById('previews');
 
-    request.open('GET', `/characters/${characterId}`);
-    request.send();
-  });
+  if (!characterSelect) return null;
+
+  const defaultCharacterId = 1;
+  createPreview(characters.find(character => character.id === defaultCharacterId), previewContainer);
+
+  characterSelect.addEventListener('change', handleCharacterSelectChange);
 });
