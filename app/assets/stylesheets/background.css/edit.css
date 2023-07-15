@@ -1,0 +1,21 @@
+.background-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.background-item {
+  flex: 0 0 calc(33.333% - 10px);
+  width: 200px;
+  height: 220px;
+  object-fit: cover;
+  display: inline-block; /* 画像を横に並べるためにインラインブロック要素にする */
+  text-align: center; /* 画像を中央に配置するためにテキストを中央揃えにする */
+  margin: 20px 5px;
+}
+
+.background-item img {
+  width: 100%; /* 画像の幅を指定 */
+  height: 100%; /* 高さは自動調整 */
+  border: outset 10px #B37D4D;
+}
+  

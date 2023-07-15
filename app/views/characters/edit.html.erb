@@ -1,0 +1,21 @@
+<%= render "shared/header" %>
+<%= form_with(model: current_user, url: user_path(current_user), method: :patch, class: 'character-form') do |f| %>
+  <div class="character-grid">
+    <% Character.all.each do |character| %>
+      <div class="character-item">
+        <div class="character-image">
+          <%= image_tag character.image_url, alt: character.name %>
+        </div>
+        <div class="character-description">
+          <h3><%= character.name %></h3>
+          <h2><%= character.profile1 %></h2>    
+        </div>  
+        <%= f.radio_button :character_id, character.id, checked: (character.id == current_user.character_id) %>
+      </div>
+      
+    <% end %>
+  </div>
+  <div class="character-submit">
+    <%= f.submit '更新する', class: 'character-btn' %>
+  </div>
+<% end %>

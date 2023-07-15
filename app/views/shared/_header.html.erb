@@ -1,0 +1,12 @@
+<header class="header">
+  <div class="top-logo">
+    <%= link_to "Chattervox","/", class:"logo" %>
+  </div>
+  <% if user_signed_in? %>
+  <ul class="menu-lists">
+    <li><%=link_to "マイページ",user_path(current_user) , class:"menu-list" %></li>
+    <li><%=link_to 'キャラクター選択', edit_character_path(current_user.character), class: 'menu-list' %></li>
+    <li><%=link_to "背景設定", edit_background_path(current_user), class:"menu-list" %></li>
+  </ul>
+  <% end %>
+</header>

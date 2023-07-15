@@ -1,0 +1,26 @@
+<%= render "shared/header" %>
+<%= form_with(model: @user, url: user_path, method: :patch) do |f| %>
+<div class="left-section">  
+    <h1>ユーザー情報</h1>
+    <p><%= f.label 'ユーザー名' %>
+    <%= f.text_field :username %></p>
+    <p><%= f.label 'メールアドレス' %>
+    <%= f.email_field :email %></p>
+    <p><%= f.label '生年月日' %>
+    <%= f.date_field :date_of_birth %></p>
+    <p><%= f.label '趣味' %>
+    <%= f.select :hobbies_id, Hobbies.all.map { |h| [h.name, h.id] } %></p>
+    <p><%= f.label '関心事' %>
+    <%= f.select :interests_id, Interests.all.map { |i| [i.name, i.id] } %></p>
+    <p><%= f.label 'キャラクター' %>
+    <%= f.select :character_id, Character.all.map { |c| [c.name, c.id] } %></p>
+    <div class="edit-button-container">
+      <%= f.submit '更新する', class: 'edit-button' %>
+    </div>
+<% end %>  
+</div>
+<div class="right-section">
+  <div class="top-character-image">
+    <%= image_tag current_user.character.image_url, alt: current_user.character.name %>
+  </div>
+</div>

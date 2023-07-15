@@ -1,0 +1,47 @@
+<%= render "shared/header" %>
+
+<div class="wrapper">
+<%= render "shared/side-bar" %>
+  
+  
+  <div class="chat-wrapper">
+    <div class="main-content">
+    <% if user_signed_in? %>
+      <div class="background-image">
+        <% if @background %>          
+          <%= image_tag @background.image_url, alt: "Background Image" %>
+        <% else %>
+          <%= image_tag Background.default_background.image_url, alt: "Default Background Image" %>
+        <% end %>
+      </div>
+      <div class="main-chat">
+        <div class="text">
+        </div>
+      </div>
+      <div class="top-character-image">
+        <%= image_tag @character.image_url, alt: @character.name %>
+      </div>     
+    </div>  
+    <div class=user-form>  
+      <%= form_with model: @conversation, class: 'form', local: true do |f| %>
+        <div class="user-chat">
+          <div class="user-input">
+            <%= f.text_field :content, name: 'conversation[content]', class: 'form-message', placeholder: 'type a message' %>
+          </div>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :character_id, value: current_user.character.id %>
+          <div>
+            <%= f.submit '送信', class: 'form-submit' %>
+          </div>
+        </div>    
+      <% end %>
+    </div>
+    <% end %>
+    <ul class="login-items hidden">
+    <% if !user_signed_in? %>
+      <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+    <% end %>
+  </ul>
+  </div>   
+</div>  

@@ -1,0 +1,181 @@
+conversation.index
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  height: 90%;
+}
+
+.side_bar {
+  width: 300px;
+  background-color: lavender;
+  overflow-y: auto;
+}
+
+.side_bar_top {
+  height: calc(100% - 100px);
+  color:#fff;
+  padding: 20px;
+}
+
+
+/* ログアウトボタン */
+.side_bar_footer {
+  background-color:lavender;
+  height: 90px;
+  padding-right: 10px;
+}
+
+.logout-button {
+  height: 100px;
+  width: 300px;
+  font-size: 40px;
+  border-radius: 30px;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color:darkred;
+  color: #fff;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.logout-button:hover {
+  background-color: #0056b3;
+}
+
+.logout-button:active {
+  background-color: #003380;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+/* メイン */
+.chat-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+/* 背景 */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.background-image img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+/* キャラクター */
+.top-character-image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(70%, 0%);
+}
+.top-character-image img {
+  width: 30%;
+  height: 30%;
+}
+/* テキストスペース */
+.main-chat {
+  display: flex;
+  align-items: flex-start;
+}
+
+.text {
+  margin-left: 10px;
+  height: 100px;
+  width: 300px;
+  background-color:honeydew;
+  border-radius: 80px;
+}
+
+
+/* ユーザーテキスト入力欄 */
+
+.user-form {
+  width: 100%;
+  height: 100px;
+  background-color: bisque;
+  padding: 20px 40px;
+  
+}
+.user-chat {
+  display: flex;
+}
+.form-message {
+  flex: 1;
+  border: none;
+  height: 60px;
+  padding: 0 10px;
+  font-size: 14px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.form-submit {
+  background-color: lightsalmon;
+  border: none;
+  color: white;
+  font-size: 16px;
+  height: 60px;
+  width: 100px;
+  padding: 0 20px;
+  margin-left: 15px;
+  border-radius: 20px;
+}
+
+/* ログイン */
+.login-items {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin: auto;
+}
+.login-items li {
+ border-bottom: solid 5px darkgreen; 
+}
+
+.sign-up,
+.login {
+  height: 400px;
+  width: 600px;
+  background-color:aquamarine;
+  border: solid 5px darkgreen;
+  border-radius: 50px;
+  text-decoration: none;
+  color: white;
+  font-weight: 800;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 25px 0 25px; 
+}
+
+
+
+
