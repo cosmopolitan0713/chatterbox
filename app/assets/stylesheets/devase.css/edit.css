@@ -2,16 +2,18 @@
   font-size: 25px;
   margin-bottom: 10px;
 }
+.login-wrap {
+  padding: 30px 60px;
+}
 
 .form-login {
-  margin-top: 30px;
+  padding: 20px 30px;
   margin-left: auto;
   margin-right: auto;
   height: 700px;
   width: 600px;
   border: 2px solid forestgreen;
   border-radius: 80px;
-  padding: 20px 30px;
   border-top: solid 5px forestgreen;
   border-bottom: solid 5px forestgreen;
 }

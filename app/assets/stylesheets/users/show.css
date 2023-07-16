@@ -1,19 +1,15 @@
 .show-wrapper {
   display: flex;
   justify-content: center;
-  margin: 30px 60px;
+  padding: 30px 60px ;
 }
-.show-group {
-  margin-top: 20px;
 
-}
-.show-text-wrap {
-
-}
 .show-text {
   font-size: 25px;
   border-bottom: 2px solid darkgreen;
-
+}
+.show-group {
+  margin-top: 20px;
 }
 
 /* 編集ボタン */

@@ -15,6 +15,7 @@
  */
 
  /* 共通 */
-/* body { */
-  /* background-color:seashell; */
-/* } */
+.default-background-color {
+  background-color:seashell;
+  height: calc(100% - 100px);
+}

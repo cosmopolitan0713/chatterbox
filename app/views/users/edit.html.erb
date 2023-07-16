@@ -1,4 +1,5 @@
 <%= render "shared/header" %>
+<div class="default-background-color">
 <%= form_with(model: @user, url: user_path, method: :patch) do |f| %>
 <div class="show-wrapper">
   <div class="left-section">
@@ -49,4 +50,5 @@
     </div>
     <%=link_to 'キャラクター選択', edit_character_path(current_user.character), class: 'edit-button-c' %></li>
   </div>
+</div>  
 </div>
