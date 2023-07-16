@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ /* 共通 */
+.default-background-color {
+  background-color:seashell;
+  height: calc(100% - 100px);
+}

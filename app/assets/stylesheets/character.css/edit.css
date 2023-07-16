@@ -1,42 +1,62 @@
-character.edit
 .character-grid {
   display: grid;
-  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
   grid-template-columns: repeat(3, 1fr); /* 3列に分割 */
   gap: 10px; /* 列と列の間隔 */
+  padding: 20px;
 }
 
 .character-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border : 3px solid darkgreen;
+  border: 3px solid darkgreen;
   border-radius: 10px;
+  padding: 10px;  
+  align-items: flex-start; /* 高さを要素の上に合わせる */
 }
 
-.character-item img {
+.character-content {
+  display: flex;
+}
+
+.character-image {
+  width: 200px;
+  height: 300px;
+  display: flex;
+  align-items: flex-end; /* 画像を下に配置する */
+}
+
+
+.character-image img {
   width: 180px; /* 画像の幅 */
   height: auto; /* 高さは自動調整 */
 }
-
+/* キャラクター説明文 */
+.character-description h1 {
+  border-bottom: 2px solid darkgreen;
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+.character-description h2 {
+  font-weight: 700;
+  margin-bottom: 10px;
+  border-bottom: 1px solid darkgreen;
+}
+/*  */
 .character-item .character-info {
   margin-top: 10px;
   text-align: center;
 }
 
-.character-info h3 {
-  margin: 0;
-  font-size: 16px;
-}
-
-.character-info p {
-  margin: 0;
-  font-size: 14px;
-}
-
+/* キャラクター選択画面ボタン */
 .character-submit {
+  margin-top: 5px;
   display: flex;
   justify-content: center;
+}
+.character-radio {
+  margin-top: auto;
+  text-align: center;
 }
 
 input[type="radio"] {
@@ -46,6 +66,7 @@ input[type="radio"] {
 .character-btn {
   height: 50px;
   width: 200px;
+  font-size: 20px;
   border-radius: 50px;
   background-color:coral;
   color:white;

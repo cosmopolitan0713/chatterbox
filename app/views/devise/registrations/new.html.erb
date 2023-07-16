@@ -1,4 +1,5 @@
 <%= render "shared/header" %>
+<div class="default-background-color">
 <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
 <div class="form-wrap">
     <div class='left-section'>
@@ -53,46 +54,42 @@
                         date_separator: '%s'),
                       "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
         </div>
-      </div>  
-    </div>
-    <div class='right-section'>
-      <div class="test">
-      <div id="previews"></div>
       </div>
-      <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">キャラクター</label>
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.select :character_id, Character.all.map { |c| [c.name, c.id] },{}, id: 'user_character_id' %>
-      </div>
+      <div class="form-groups">  
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">趣味</label>
           <span class="optional">任意</span>
         </div>
-        <%= f.select :hobbies_id, Hobbies.all.map { |h| [h.name, h.id] } %>
+        <%= f.select :hobbies_id, Hobbies.all.map { |h| [h.name, h.id] }, {}, class:'default-select' %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">関心事</label>
           <span class="optional">任意</span>
         </div>
-        <%= f.select :interests_id, Interests.all.map { |i| [i.name, i.id] } %>
+        <%= f.select :interests_id, Interests.all.map { |i| [i.name, i.id] }, {}, class:'default-select' %>
       </div>
+      </div>
+    </div>
+    <div class='right-section'>
+      <div class="previews-item">
+        <div id="previews"></div>
+      </div>        
       <div class="form-group">
         <div class='form-text-wrap'>
-          <label class="form-text">背景</label>
-          <span class="optional">任意</span>
-        </div> 
-        <%= f.select :background_id, Background.all.map { |b| [b.name, b.id] } %>
+          <label class="form-text">キャラクター</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.select :character_id, Character.all.map { |c| [c.name, c.id] },{}, class: 'default-select-c' ,id: 'user_character_id' %>
       </div>
+
     </div>
 </div>
 <div class='register-btn'>
   <%= f.submit "会員登録" ,class:"register-red-btn" %>    
 </div>    
-  <% end %>
-
+<% end %>
+</div>
 
 

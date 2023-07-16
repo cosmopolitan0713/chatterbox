@@ -1,37 +1,59 @@
 .form-wrap {
   display: flex;
   justify-content: space-between;
-  text-align: center;
-  margin: 30px 60px;
+  padding: 30px 60px;
 }
-.left-section {
-  border: 2px solid forestgreen;
-  border-radius: 80px;
-  padding: 30px;
-  width: 50%;
-  margin-right: 15px;
-}
-.right-section {
-  border: 2px solid forestgreen;
-  border-radius: 80px;
-  padding: 30px;
-  width: 50%;
-  margin-left: 15px;
-}
-.test {
-  width: 200px;
-  height: 300px;
-  margin: auto;
-}
-.preview-image {
-  width: 200px; /* 幅を200pxに設定 */
-  height: auto; /* 高さを自動調整 */
- 
+.form-header-text {
+  font-size: 25px;
+  margin-bottom: 10px;
 }
 
-/* 共通 */
+.left-section {
+  height: 700px;
+  width: 600px;
+  border: 2px solid forestgreen;
+  border-radius: 80px;
+  padding: 20px 30px;
+  margin: auto;
+  border-top: solid 5px forestgreen;
+  border-bottom: solid 5px forestgreen;
+}
+.right-section {
+  height: 700px;
+  width: 600px;
+  border: 2px solid forestgreen;
+  border-radius: 80px;
+  padding: 30px;
+  margin: auto;
+  border-top:solid 5px forestgreen;
+  border-bottom: solid 5px forestgreen;
+  text-align: center;
+}
+
+.previews-item {
+  width: 300px;
+  height: 400px;
+  margin: auto;
+  margin-bottom: 100px;
+}
+
+.preview-image {
+  width: 300px; /* 幅を200pxに設定 */
+  height: auto; /* 高さを自動調整 */
+}
+.form-group {
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+.form-groups {
+  display: flex;
+}
+
+
+/* 必須マーク */
 .indispensable {
-  background:salmon;
+  background:lightsalmon;
   margin-left: 8px;
   padding: 3px;
   border-radius: 2px;
@@ -39,6 +61,7 @@
   font-size: 12px;
   font-weight: bold;
 }
+/* 任意マーク */
 .optional {
   background:wheat;
   margin-left: 8px;
@@ -62,7 +85,7 @@
   border-radius: 4px;
   border: 1px solid #ccc;
   background: #fff;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
 }
 
@@ -80,4 +103,41 @@
   background: #fff;
   font-size: 16px;
   resize: none;
+}
+.default-select {
+  width: 75px;
+  margin-top: 5px;
+  height: 45px;
+  padding-left: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.default-select-c {
+  width: 150px;
+  margin-top: 5px;
+  height: 60px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+/* 会員登録ボタン */
+.register-btn {
+  text-align: center;
+}
+
+.register-red-btn {
+  font-size: 20px;
+  font-weight: 700;
+  background-color:lightsalmon;
+  border: 3px solid chocolate;
+  border-radius: 30px;
+  color: white;
+  width: 300px;
+  height: 50px;
 }

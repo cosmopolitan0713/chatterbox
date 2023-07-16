@@ -11,6 +11,7 @@
 | hobbies_id         | integer |                           | 
 | interests_id       | integer |                           | 
 | character_id       | integer | null: false               |
+| background_id      | integer |                           |
 
 ### Association
 - has_many :conversations
@@ -23,7 +24,7 @@
 | content              | text       | null: false                    | 
 | user(FK)             | references | null: false, foreign_key: true | 
 | character_id         | integer    | null: false                    |
-| background_id        | integer    |                                |
+
 
 ### Association
 - belongs_to :user

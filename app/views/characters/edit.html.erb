@@ -1,21 +1,29 @@
 <%= render "shared/header" %>
+<div class="default-background-color">
 <%= form_with(model: current_user, url: user_path(current_user), method: :patch, class: 'character-form') do |f| %>
   <div class="character-grid">
-    <% Character.all.each do |character| %>
-      <div class="character-item">
+  <% Character.all.each do |character| %>
+    <div class="character-item">
+      <div class="character-content">
         <div class="character-image">
           <%= image_tag character.image_url, alt: character.name %>
         </div>
         <div class="character-description">
-          <h3><%= character.name %></h3>
-          <h2><%= character.profile1 %></h2>    
-        </div>  
+          <h1>キャラクター情報</h1>
+          <h2>名前: <%= character.name %></h2>
+          <h2>性格: <%= character.profile1 %></h2>
+          <h2>好きなもの: </h2>
+          <h2>特徴: </h2>
+        </div>
+      </div>
+      <div class="character-radio">
         <%= f.radio_button :character_id, character.id, checked: (character.id == current_user.character_id) %>
       </div>
-      
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
   <div class="character-submit">
     <%= f.submit '更新する', class: 'character-btn' %>
   </div>
 <% end %>
+</div>

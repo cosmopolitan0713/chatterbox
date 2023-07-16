@@ -1,11 +1,14 @@
 <%= render "shared/header" %>
+<div class="default-background-color">
 <%= form_with(model: @user, url: background_path(current_user.background.id), method: :patch, class: 'background-form') do |f| %>
-  <div class="form-group">
+  <div class="background-group">
     <div class="background-list">
       <% @backgrounds.each do |background| %>
         <div class="background-item">
           <%= image_tag background.image_url, alt: background.name %>
-          <%= f.radio_button :background_id, background.id %>
+          <div class="background-radio">
+            <%= f.radio_button :background_id, background.id %>
+          </div>
         </div>
       <% end %>
     </div>
@@ -13,6 +16,7 @@
   
 
   <div class="background-submit">
-    <%= f.submit '更新する', class: 'btn btn-primary' %>
+    <%= f.submit '更新する', class: 'character-btn' %>
   </div>
 <% end %>
+</div>

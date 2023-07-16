@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   validates :username,     presence: true
   validates :character_id, presence: true
-  validates :background_id, numericality: { allow_nil: true, other_than: 0, message: "を選択してください" }
+  
   
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates_format_of :password, with: PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers', on: :registration
@@ -23,7 +23,7 @@ class User < ApplicationRecord
   with_options numericality: { other_than: 0, message: "を選択してください" } do
     validates :character_id
   end
-  
+  # showページに記述するため
   def hobbies_name
     Hobbies.find_by(id: self.hobbies_id)&.name
   end
@@ -35,6 +35,7 @@ class User < ApplicationRecord
   def character_name
     Character.find_by(id: self.character_id)&.name
   end
+  # ここまで
 
   def background
     Background.find_by(id: self.background_id)
@@ -43,6 +44,7 @@ class User < ApplicationRecord
   def user_background
     background || Background.default_background
   end
+  
   # 追加
   def update_without_current_password(params, *options)
     params.delete(:current_password)
