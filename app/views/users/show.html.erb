@@ -1,20 +1,52 @@
 <%= render "shared/header" %>
 <div class="show-wrapper">
   <div class="left-section">
-  <h1>ユーザー情報</h1>
-  <p>ユーザー名: <%= current_user.username %></p>
-  <p>Email: <%= current_user.email %></p>
-  <p>生年月日: <%= current_user.date_of_birth %></p>
-  <p>趣味: <%= current_user.hobbies_name %></p>
-  <p>関心: <%= current_user.interests_name %></p>
-  <p>キャラクター: <%= current_user.character_name %></p>
-  <div class="edit-button-container">
-    <%= link_to '編集', edit_user_path(current_user), class: 'edit-button' %>
+    <h1 class="form-header-text">
+        ユーザー情報
+    </h1>
+    <div class="show-group">
+        <div class="show-text-wrap">
+          <div class="show-text">ユーザー名: <%= current_user.username %></div>
+        </div>
+    </div> 
+    <div class="show-group">
+        <div class="show-text-wrap">
+          <div class="show-text">メールアドレス: <%= current_user.email %></div>
+        </div>
+    </div>
+    <div class="show-group">
+        <div class="show-text-wrap">
+          <div class="show-text">生年月日: <%= current_user.date_of_birth %></div>
+        </div>
+    </div>
+    <div class="show-group">
+        <div class="show-text-wrap">
+          <div class="show-text">趣味: <%= current_user.hobbies_name %></div>
+        </div>
+    </div>
+    <div class="show-group">
+        <div class="show-text-wrap">
+          <div class="show-text">関心事: <%= current_user.interests_name %></div>
+        </div>
+    </div>
+    <div class="edit-button-container">
+      <%= link_to '編集', edit_user_path(current_user), class: 'edit-button' %>
+    </div>
+    <div class="show-delete">
+      <%= form_with url: user_path(current_user), method: :delete do |f| %>
+        <%= f.button 'アカウント削除', class: 'delete-button', id: 'delete-button' %>
+      <% end %>
+    </div>  
   </div>
-  
   <div class="right-section">
-    <div class="top-character-image">
+    <div class="show-character-image">
       <%= image_tag @character.image_url, alt: @character.name %>
+      <div class="character-info">
+         <div class="show-text">キャラクター: <%= current_user.character_name %></div>
+         <p>性格: <%= @character.profile1 %></p>
+         <p>好きなもの: </p>
+         <p>特徴: </p>
+      </div>
     </div>
   </div>
-</div>   
+</div> 
