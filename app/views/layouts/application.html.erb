@@ -6,10 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>    
+    <%= javascript_importmap_tags %>
+    <script>
+      // RailsからJavaScriptに環境変数を渡す
+      const api_Key = "<%= ENV['CHAT_GPT_KEY'] %>";
+    </script>
   </head>
 
   <body>
     <%= yield %>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
 </html>

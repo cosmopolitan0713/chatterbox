@@ -15,7 +15,7 @@
         <% end %>
       </div>
       <div class="main-chat">
-        <div class="text">
+        <div class="output">
         </div>
       </div>
       <div class="top-character-image">
@@ -23,16 +23,15 @@
       </div>     
     </div>  
     <div class=user-form>  
-      <%= form_with model: @conversation, class: 'form', local: true do |f| %>
+      <%= form_with model: @conversation, id: "conversation-form", class: 'form', local: true do |f| %>
         <div class="user-chat">
           <div class="user-input">
-          <%= render 'shared/error_messages', model: f.object %>
-            <%= f.text_field :content, name: 'conversation[content]', class: 'form-message', placeholder: 'type a message' %>
+            <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
           </div>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.hidden_field :character_id, value: current_user.character.id %>
           <div>
-            <%= f.submit '送信', class: 'form-submit', disabled: f.object.errors.any? %>
+            <%= f.submit '送信', class: 'form-submit', id: "submit-button", disabled: f.object.errors.any? %>
           </div>
         </div>    
       <% end %>

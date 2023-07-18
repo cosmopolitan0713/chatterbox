@@ -1,3 +1,5 @@
+/* キャラクター選択ページ */
+
 .character-grid {
   display: grid;
   flex-wrap: wrap;
