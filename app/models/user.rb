@@ -45,7 +45,7 @@ class User < ApplicationRecord
     background || Background.default_background
   end
   
-  # 追加
+  # 更新時、パスワードを除外
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 
