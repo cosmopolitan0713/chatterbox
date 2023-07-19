@@ -7,11 +7,11 @@
   justify-content: space-between;
 }
 .top-logo {
-  font-size: 36px;
+  font-size: 60px;
 }
 .logo {
   color: #FFFFFF;
-  font-weight: 500;
+  font-weight: 800;
   text-decoration: none;
   font-family: inherit;
   line-height: 80px;
@@ -22,11 +22,25 @@
 }
 .menu-list {
   color:#FFFFFF;
-  font-size: 20px;
+  font-size: 30px;
   text-decoration: none;
   padding: 20px;
   background-color:lightsalmon;
   border-radius: 50px;
   line-height: 80px;
   margin-left: 10px;
+  cursor: pointer;
+  font-family: "Comic Sans MS";
+  font-weight: 800;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
+.menu-list:hover {
+  background-color:orangered;
+}
+
+.menu-list:active {
+  background-color:darksalmon;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+

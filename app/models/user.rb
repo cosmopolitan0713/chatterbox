@@ -20,9 +20,6 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates_format_of :password, with: PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers', on: :registration
 
-  with_options numericality: { other_than: 0, message: "を選択してください" } do
-    validates :character_id
-  end
   # showページに記述するため
   def hobbies_name
     Hobbies.find_by(id: self.hobbies_id)&.name
