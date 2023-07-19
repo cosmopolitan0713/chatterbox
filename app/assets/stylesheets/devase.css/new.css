@@ -35,6 +35,7 @@
   height: 400px;
   margin: auto;
   margin-bottom: 100px;
+  
 }
 
 .preview-image {
@@ -105,11 +106,11 @@
   resize: none;
 }
 .default-select {
-  width: 75px;
+  width: 120px;
   margin-top: 5px;
   height: 45px;
   padding-left: 10px;
-  border-radius: 4px;
+  border-radius: 5px;
   border: 1px solid #ccc;
   background: #fff;
   font-size: 14px;
@@ -125,19 +126,4 @@
   font-size: 18px;
   cursor: pointer;
   border-radius: 10px;
-}
-/* 会員登録ボタン */
-.register-btn {
-  text-align: center;
-}
-
-.register-red-btn {
-  font-size: 20px;
-  font-weight: 700;
-  background-color:lightsalmon;
-  border: 3px solid chocolate;
-  border-radius: 30px;
-  color: white;
-  width: 300px;
-  height: 50px;
 }

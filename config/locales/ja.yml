@@ -3,6 +3,7 @@ ja:
     attributes:
       user:
         username: "ユーザー名"
+        character_id: "キャラクター"
   
     errors:
       models:

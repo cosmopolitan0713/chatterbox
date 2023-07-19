@@ -1,7 +1,7 @@
 class Background < ActiveHash::Base
 
   self.data = [
-    { id: 1, name: 'Default Background', image_url: 'default_background.jpg' },
+    { id: 1, name: '草原', image_url: 'default_background.jpg' },
     { id: 2, name: '食堂' , image_url: '5919320i.jpg' },
     { id: 3, name: 'ラジオ室', image_url: '1688670i.jpg' },
     { id: 4, name: '港', image_url: '1988536i.jpg'},
@@ -10,12 +10,4 @@ class Background < ActiveHash::Base
     { id: 7, name: 'ラウンジ', image_url: '11069179i.jpg'}
   ]
   
-  def self.default_background
-    find(1)
-  end
-  
-  def image_path
-    "/images/backgrounds/#{image}"
-  end
-
 end

@@ -17,7 +17,8 @@
         </div>
       </div>
       <div class="character-radio">
-        <%= f.radio_button :character_id, character.id, checked: (character.id == current_user.character_id) %>
+        <%= f.radio_button :character_id, character.id,id: "radio-#{character.id}" ,checked: (character.id == current_user.character_id) %>
+        <label for="<%= "radio-#{character.id}" %>"><%= "選ぶ" %></label>
       </div>
     </div>
   <% end %>

@@ -13,9 +13,12 @@ class ConversationsController < ApplicationController
 
   def create
   @conversation = Conversation.new(conversations_params)
+  @character = Character.find(@conversation.character_id)
+  
     if @conversation.save
       redirect_to root_path, notice: "保存に成功しました"
     else
+      @conversations = Conversation.all
       render :index
     end
   end
