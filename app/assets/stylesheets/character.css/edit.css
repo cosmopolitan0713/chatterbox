@@ -50,27 +50,29 @@
   text-align: center;
 }
 
-/* キャラクター選択画面ボタン */
-.character-submit {
-  margin-top: 5px;
-  display: flex;
-  justify-content: center;
-}
-.character-radio {
-  margin-top: auto;
-  text-align: center;
+.character-radio label {
+  display: inline-block;
+  padding: 0 20px;
+  background-color:darksalmon;
+  color:white;
+  font-weight: 800;
+  border-radius: 20px;
+  width: 150px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-input[type="radio"] {
-  width: 20px;
-  height: 20px;
+.character-radio label:hover {
+  background-color: orangered;
 }
-.character-btn {
-  height: 50px;
-  width: 200px;
-  font-size: 20px;
-  border-radius: 50px;
-  background-color:coral;
-  color:white;
-  border: 1px solid chocolate;
-} 
+
+.character-radio label:active {
+  background-color:tomato;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ラジオボタンが選択された状態 */
+.character-radio input[type="radio"]:checked + label {
+  background-color: orangered;
+}

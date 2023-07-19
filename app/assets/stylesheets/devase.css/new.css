@@ -127,18 +127,3 @@
   cursor: pointer;
   border-radius: 10px;
 }
-/* 会員登録ボタン */
-.register-btn {
-  text-align: center;
-}
-
-.register-red-btn {
-  font-size: 20px;
-  font-weight: 700;
-  background-color:lightsalmon;
-  border: 3px solid chocolate;
-  border-radius: 30px;
-  color: white;
-  width: 300px;
-  height: 50px;
-}
