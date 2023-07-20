@@ -5,9 +5,7 @@ conversation.index
   padding: 0;
 }
 
-html, body {
-  height: 100%;
-}
+
 
 .wrapper {
   display: flex;

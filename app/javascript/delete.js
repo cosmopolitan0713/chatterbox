@@ -1,8 +1,10 @@
 console.log("test");
 window.addEventListener('DOMContentLoaded', function() {
   const deleteButton = document.getElementById('delete-button');
-  deleteButton.addEventListener('click', function(event) {
-    event.preventDefault();
+  
+  if (deleteButton) {
+  deleteButton.addEventListener('click', function(e) {
+    e.preventDefault();
 
     const confirmation = confirm('アカウントを削除しますか？');
     if (confirmation) {
@@ -15,10 +17,11 @@ window.addEventListener('DOMContentLoaded', function() {
       deleteForm.submit();
     }
   });
-
+}
   // CSRFトークンを取得するヘルパー関数
   function getCSRFToken() {
     const tokenElement = document.querySelector('meta[name="csrf-token"]');
     return tokenElement ? tokenElement.getAttribute('content') : '';
   }
 });
+

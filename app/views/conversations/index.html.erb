@@ -7,9 +7,11 @@
   <div class="chat-wrapper">
     <div class="main-content">
     <% if user_signed_in? %>
-      <div class="background-image">
+       <% if @background %>          
           <%= image_tag @background.image_url, alt: "Background Image" %>
-      </div>
+        <% else %>
+          <%= image_tag Background.default_background.image_url, alt: "Default Background Image" %>
+        <% end %>
       <div class="main-chat">
         <div class="output">
         </div>

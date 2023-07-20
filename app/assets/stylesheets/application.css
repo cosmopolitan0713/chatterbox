@@ -19,6 +19,9 @@
   background-color:seashell;
   height: calc(100% - 100px);
 }
-body {
+body{
   font-family: "Comic Sans MS";
+}
+html, body {
+  height: 100%;
 }

@@ -3,7 +3,7 @@ class BackgroundsController < ApplicationController
 
   def edit
     @user = current_user
-    @backgrounds = Background.all    
+    @backgrounds = Background.all
   end
 
   def update

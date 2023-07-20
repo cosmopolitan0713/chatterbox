@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_many :conversations
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -12,36 +12,34 @@ class User < ApplicationRecord
   belongs_to :character
   belongs_to :background
 
-
   validates :username,     presence: true
   validates :character_id, presence: true
-  
-  
+
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates_format_of :password, with: PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers', on: :registration
 
   # showページに記述するため
   def hobbies_name
-    Hobbies.find_by(id: self.hobbies_id)&.name
+    Hobbies.find_by(id: hobbies_id)&.name
   end
 
   def interests_name
-    Interests.find_by(id: self.interests_id)&.name
+    Interests.find_by(id: interests_id)&.name
   end
 
   def character_name
-    Character.find_by(id: self.character_id)&.name
+    Character.find_by(id: character_id)&.name
   end
   # ここまで
 
   def background
-    Background.find_by(id: self.background_id)
+    Background.find_by(id: background_id)
   end
-  
+
   def user_background
     background || Background.default_background
   end
-  
+
   # 更新時、パスワードを除外
   def update_without_current_password(params, *options)
     params.delete(:current_password)
@@ -55,5 +53,4 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
-
 end

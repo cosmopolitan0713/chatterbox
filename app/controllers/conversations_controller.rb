@@ -1,5 +1,4 @@
 class ConversationsController < ApplicationController
-  
   def index
     @conversations = Conversation.all.includes(:user)
     @conversation = Conversation.new
@@ -12,20 +11,20 @@ class ConversationsController < ApplicationController
   end
 
   def create
-  @conversation = Conversation.new(conversations_params)
-  @character = Character.find(@conversation.character_id)
-  
+    @conversation = Conversation.new(conversations_params)
+    @character = Character.find(@conversation.character_id)
     if @conversation.save
-      redirect_to root_path, notice: "保存に成功しました"
+      redirect_to root_path, notice: '保存に成功しました'
     else
       @conversations = Conversation.all
+      logger.error(@conversation.errors.full_messages)
       render :index
     end
   end
 
   def show
   end
-  
+
   def character_select
     @conversation = Conversation.new
     @characters = Character.all
@@ -40,12 +39,10 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
     @backgrounds = Background.all
   end
-  
 
   private
-  
+
   def conversations_params
     params.require(:conversation).permit(:content, :user_id, :character_id)
   end
-
 end

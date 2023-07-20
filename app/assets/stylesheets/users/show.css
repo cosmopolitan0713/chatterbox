@@ -12,10 +12,37 @@
 .show-group {
   margin-top: 20px;
 }
+/* ユーザーページ編集ボタン */
+.edit-button-e {
+  height: 100px;
+  width: 200px;
+  font-size: 40px;
+  border-radius: 20px;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color:lightsalmon;
+  color: #fff;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  line-height: 80px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
 
-/* 編集ボタン */
+.edit-button-e:hover {
+  background-color:chocolate;
+}
+
+.edit-button-e:active {
+  background-color:chocolate;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 編集ページ更新ボタン */
 .edit-button-container {
-
   display: flex;
   justify-content: center;
   margin-top: 100px;
@@ -31,7 +58,6 @@
   background-color:lightsalmon;
   color: #fff;
   border: none;
-  line-height: 100px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -48,6 +74,8 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* 編集ページキャラクター選択ボタン */
+
 .edit-button-c {
   margin-top: 20px;
   height: 100px;
@@ -59,7 +87,7 @@
   background-color:lightsalmon;
   color: #fff;
   border: none;
-  line-height: 100px;
+  line-height: 80px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -67,6 +95,14 @@
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
+.edit-button-c:hover {
+  background-color:chocolate;
+}
+
+.edit-button-c:active {
+  background-color:chocolate;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
 
 /* 右側キャラクター */
 .show-character-image {

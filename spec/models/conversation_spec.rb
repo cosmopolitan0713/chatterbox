@@ -16,19 +16,18 @@ RSpec.describe Conversation, type: :model do
       it 'contentが空では保存できない' do
         @conversation.content = ''
         @conversation.valid?
-        expect(@conversation.errors.full_messages).to include("Contentを入力してください")
+        expect(@conversation.errors.full_messages).to include('Contentを入力してください')
       end
       it 'userが紐付いてないと保存できない' do
         @conversation.user = nil
         @conversation.valid?
-        expect(@conversation.errors.full_messages).to include("Userを入力してください")
+        expect(@conversation.errors.full_messages).to include('Userを入力してください')
       end
       it 'キャラクターが紐付いてないと保存できない' do
         @conversation.character = nil
         @conversation.valid?
-        expect(@conversation.errors.full_messages).to include("Characterを入力してください")
+        expect(@conversation.errors.full_messages).to include('Characterを入力してください')
       end
     end
   end
-
 end
