@@ -13,16 +13,23 @@ class ConversationsController < ApplicationController
   def create
     @conversation = Conversation.new(conversations_params)
     @character = Character.find(@conversation.character_id)
-    if @conversation.save
-      redirect_to root_path, notice: '保存に成功しました'
-    else
-      @conversations = Conversation.all
-      logger.error(@conversation.errors.full_messages)
-      render :index
-    end
-  end
 
-  def show
+    puts "Conversation Params: #{conversations_params}" # デバッグ用のログ
+
+
+    respond_to do |format|
+      if @conversation.save
+        format.html { redirect_to root_path, notice: '保存に成功しました' }
+        format.json { render json: { status: 'success', message: '保存に成功しました' } }
+      else
+        format.html do
+          @conversations = Conversation.all
+          logger.error(@conversation.errors.full_messages)
+          render :index
+        end
+        format.json { render json: { status: 'error', errors: @conversation.errors.full_messages } }
+      end
+    end
   end
 
   def character_select

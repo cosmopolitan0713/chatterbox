@@ -1,39 +1,56 @@
-console.log('test');
-
-// ChatGPTのAPIエンドポイント
 const apiURL = "https://api.openai.com/v1/chat/completions";
 
-// フォームの送信時に会話を開始する
-window.addEventListener('turbo:load', () => {
+// フォームの送信時に非同期通信を行う
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("conversation-form");
-  form.addEventListener("submit", handleFormSubmit);
+  const mainChat = document.querySelector(".main-chat");
+  const userMessage = document.querySelector(".user-message");
+  const chatbotMessage = document.querySelector(".chatbot-message");
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    // 入力されたテキストを取得
+    const text = document.querySelector("#conversation_content").value;
+    console.log("text:", text);
+
+    // キャラクターIDを取得
+    const characterId = document.querySelector("#character_id").value;
+    console.log(characterId);
+
+    try {
+      // ChatGPTにテキストを送信して返答を取得
+      const responseText = await requestChatAPI(text);
+      console.log("responseText:", responseText);
+
+      // 返信がある場合のみメッセージを表示する
+      if (responseText.trim() !== '') {
+        mainChat.style.display = 'block';
+        userMessage.textContent = text;
+        chatbotMessage.textContent = responseText;
+      } else {
+        mainChat.style.display = 'none';
+      }
+      
+      // Voicevox APIにテキストを送信して音声を取得し、再生する
+      const voicevoxApiURL =
+        "https://deprecatedapis.tts.quest/v2/voicevox/audio/?text=" +
+        encodeURIComponent(responseText) +
+        "&speaker=" +
+        (characterId - 1) +
+        "&key=y1q30912c5n9C-F&pitch=0&intonationScale=1&speed=1";
+      const voicevoxResponse = await fetch(voicevoxApiURL);
+      const voicevoxBlob = await voicevoxResponse.blob();
+      const voicevoxAudio = new Audio(URL.createObjectURL(voicevoxBlob));
+      voicevoxAudio.play();
+
+      // フォームをクリア
+      form.reset();
+    } catch (error) {
+      console.error(error);
+    }
+  });
 });
 
-async function handleFormSubmit(event) {
-
-  // 入力されたテキストを取得
-  const text = document.querySelector("#conversation_content").value;
-  console.log("text:", text);
-
-  // キャラクターIDを取得
-  const characterId = document.querySelector("#character_id").value;
-  console.log(characterId)
-
-  // ChatGPTにテキストを送信して返答を取得
-  const responseText = await requestChatAPI(text);
-  console.log("responseText:", responseText);
-  
-  // ChatGPTの返答を表示する
-  const output = document.querySelector(".output");
-  output.textContent = responseText;
-
-  // Voicevox APIにテキストを送信して音声を取得し、再生する
-  const voicevoxApiURL = "https://deprecatedapis.tts.quest/v2/voicevox/audio/?text=" + encodeURIComponent(responseText) + "&speaker=" + (characterId - 1) + "&key=y1q30912c5n9C-F&pitch=0&intonationScale=1&speed=1";
-  const voicevoxResponse = await fetch(voicevoxApiURL);
-  const voicevoxBlob = await voicevoxResponse.blob();
-  const voicevoxAudio = new Audio(URL.createObjectURL(voicevoxBlob));
-  voicevoxAudio.play();
-}
 
 async function requestChatAPI(text) {
   // ChatGPTのAPIキー
