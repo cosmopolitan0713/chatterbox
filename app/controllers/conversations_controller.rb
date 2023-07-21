@@ -14,21 +14,16 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.new(conversations_params)
     @character = Character.find(@conversation.character_id)
 
-    puts "Conversation Params: #{conversations_params}" # デバッグ用のログ
+    # ChatGPTの返答内容を取得
+  response_text = params[:conversation][:response_text]
 
+  # ChatGPTからの返答を含めて保存
+  @conversation.content += "\nChatGPT: #{response_text}"
 
-    respond_to do |format|
-      if @conversation.save
-        format.html { redirect_to root_path, notice: '保存に成功しました' }
-        format.json { render json: { status: 'success', message: '保存に成功しました' } }
-      else
-        format.html do
-          @conversations = Conversation.all
-          logger.error(@conversation.errors.full_messages)
-          render :index
-        end
-        format.json { render json: { status: 'error', errors: @conversation.errors.full_messages } }
-      end
+    if @conversation.save
+      render json: { status: "success", message: "会話が保存されました。" }
+    else
+      render json: { status: "error", message: "会話の保存に失敗しました。" }
     end
   end
 
@@ -52,4 +47,5 @@ class ConversationsController < ApplicationController
   def conversations_params
     params.require(:conversation).permit(:content, :user_id, :character_id)
   end
+
 end

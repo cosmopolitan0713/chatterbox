@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="top-character-image">
-        <%= image_tag @character.image_url, alt: @character.name %>
+        <img src="<%= @character.image_url %>" alt="<%= @character.name %>" id="character-image">
       </div>     
     </div>  
     <div class=user-form>  
@@ -35,7 +35,9 @@
         <div>
           <%= f.submit '送信', class: 'form-submit', id: "submit-button" , disabled: f.object.errors.any? %>
         </div>
-      </div>    
+      </div>
+       <!-- CSRFトークンを送信するためのinput要素 -->
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">    
       <% end %>
     </div>
     <% end %>
