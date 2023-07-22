@@ -15,13 +15,16 @@ conversation.index
 .side_bar {
   width: 300px;
   background-color:rgb(255, 240, 221);
-  overflow-y: auto;
 }
 
 .side_bar_top {
-  height: calc(100% - 100px);
+  height: calc(100% - 90px);
   color:#fff;
   padding: 20px;
+  overflow-y: auto;
+}
+.side_bar_footer {
+  height: 50px;
 }
 
 /* メイン */

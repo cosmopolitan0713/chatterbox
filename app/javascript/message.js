@@ -1,24 +1,51 @@
-const apiURL = "https://api.openai.com/v1/chat/completions";
+import { playVoice } from './voice.js'; // 追加
+import { getCSRFToken } from './form.js'; // 追加
+import { requestChatAPI } from './api.js'; // 追加
 import characters from './characters.js';
 
-// CSRFトークンを取得する関数の定義
-function getCSRFToken() {
-  const csrfTokenTag = document.querySelector("meta[name=csrf-token]");
-  return csrfTokenTag ? csrfTokenTag.content : null;
+const apiURL = "https://api.openai.com/v1/chat/completions";
+
+// 要素を取得
+const mainChat = document.querySelector(".main-chat");
+const userMessage = document.querySelector(".user-message");
+const chatbotMessage = document.querySelector(".chatbot-message");
+
+// 初期化処理としてメッセージ表示エリアを空にする
+userMessage.innerHTML = '';
+chatbotMessage.innerHTML = '';
+
+// メッセージを追加する関数
+function addMessage(message, messageType) {
+  const messageElement = document.createElement("div");
+  messageElement.classList.add(messageType);
+  messageElement.textContent = message;
+  mainChat.appendChild(messageElement);
+
+  // ボイス再生
+  if (messageType === "chatbot-message") {
+    const characterId = document.querySelector("#character_id").value;
+    playVoice(message, characterId);
+  }
+}
+
+// 選択された会話の内容を表示する関数
+function showConversation(event) {
+  event.preventDefault();
+  const content = event.target.dataset.content;
+
+  // メッセージを追加して表示
+  addMessage(content, 'chatbot-message');
+  mainChat.style.display = 'block';
 }
 
 // フォームの送信時に非同期通信を行う
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("conversation-form");
-  const mainChat = document.querySelector(".main-chat");
-  const userMessage = document.querySelector(".user-message");
-  const chatbotMessage = document.querySelector(".chatbot-message");
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
    
-
     // 入力されたテキストを取得
-    const text = document.querySelector("#conversation_content").value; // フォームの入力値を取得
+    const text = document.querySelector("#conversation_content").value;
     console.log("text:", text);
 
     // キャラクターIDを取得
@@ -28,30 +55,32 @@ document.addEventListener("DOMContentLoaded", () => {
     // キャラクター情報を取得
     const character = characters[characterId];
     const systemMessage = character.system_message;
-    
+ 
     try {
       // ChatGPTにテキストを送信して返答を取得
-      const responseText = await requestChatAPI(systemMessage, text);
+      const responseText = await requestChatAPI(apiURL, api_Key, systemMessage, text);
+
+      // メッセージを追加して表示
+      addMessage(text, 'user-message'); // ユーザーメッセージを表示
+      addMessage(responseText, 'chatbot-message'); // チャットボットの返答を表示
 
       // 返信がある場合のみメッセージを表示する
       if (responseText.trim() !== '') {
         mainChat.style.display = 'block';
-        userMessage.textContent = text;
-        chatbotMessage.textContent = responseText;
       } else {
         mainChat.style.display = 'none';
       }
       
+      // データベースに送信テキストと返信テキストを保存
       const formData = new FormData(form);
       formData.append("conversation[response_text]", responseText);
-      console.log(formData)
   
       try {
         const response = await fetch("/conversations", {
           method: "POST",
           body: formData,
           headers: {
-            "X-CSRF-Token": getCSRFToken(), // CSRFトークンを取得する関数を使用する
+            "X-CSRF-Token": getCSRFToken(),
           },
         });
   
@@ -68,53 +97,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // エラー処理を記述する
       }
 
-      // Voicevox APIにテキストを送信して音声を取得し、再生する
-      const voicevoxApiURL =
-        "https://deprecatedapis.tts.quest/v2/voicevox/audio/?text=" +
-        encodeURIComponent(responseText) +
-        "&speaker=" +
-        (characterId - 1) +
-        "&key=y1q30912c5n9C-F&pitch=0&intonationScale=1&speed=1";
-      const voicevoxResponse = await fetch(voicevoxApiURL);
-      const voicevoxBlob = await voicevoxResponse.blob();
-      const voicevoxAudio = new Audio(URL.createObjectURL(voicevoxBlob));
-      voicevoxAudio.play();
-
       // フォームをクリア
       form.reset();
     } catch (error) {
       console.error(error);
     }
   });
+
+  // 選択された会話のリンクのクリックイベントリスナーを登録
+  const conversationLinks = document.querySelectorAll(".conversation-link");
+  conversationLinks.forEach(link => {
+    link.addEventListener("click", showConversation);
+  });
 });
-
-
-async function requestChatAPI(systemMessage,text) {
-  // ChatGPTのAPIキー
-  const apiKey = "<%= ENV['CHAT_GPT_KEY'] %>";
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${api_Key}`,
-  };
-
-  const messages = [
-    {
-      role: "system",
-      content: systemMessage, 
-    },
-    {
-      role: "user",
-      content: text,
-    },
-  ];
-
-  const payload = {
-    model: "gpt-3.5-turbo",
-    max_tokens: 128,
-    messages: messages,
-  };
-  // ChatGPTにAPIリクエストを送信して返答を取得
-  const response = await axios.post(apiURL, payload, { headers: headers });
-  return response.data.choices[0].message.content;
-
-}

@@ -17,13 +17,13 @@ class ConversationsController < ApplicationController
     # ChatGPTの返答内容を取得
   response_text = params[:conversation][:response_text]
 
-  # ChatGPTからの返答を含めて保存
-  @conversation.content += "\nChatGPT: #{response_text}"
+  # 返信テキストを保存
+  @conversation.chatbot_reply = response_text
 
     if @conversation.save
       render json: { status: "success", message: "会話が保存されました。" }
     else
-      render json: { status: "error", message: "会話の保存に失敗しました。" }
+      render json: { status: "error", message: "保存に失敗しました。" }
     end
   end
 
@@ -45,7 +45,7 @@ class ConversationsController < ApplicationController
   private
 
   def conversations_params
-    params.require(:conversation).permit(:content, :user_id, :character_id)
+    params.require(:conversation).permit(:content, :chatbot_reply, :character_id, :user_id)
   end
 
 end

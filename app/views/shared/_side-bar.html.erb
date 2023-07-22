@@ -5,7 +5,7 @@
       <div class="conversation-history">
         <% @conversations.each do |conversation| %>
           <div class="conversation">
-            <p><%= conversation.content %></p>
+              <%= link_to conversation.id, "#", class: "conversation-link", data: { content: conversation.content } %>
           </div>
         <% end %>
       </div>

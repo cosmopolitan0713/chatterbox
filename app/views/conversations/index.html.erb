@@ -32,6 +32,7 @@
         </div>
         <%= f.hidden_field :user_id, value: current_user.id %>
         <%= f.hidden_field :character_id, id: "character_id", value: current_user.character.id %>
+        <%= f.hidden_field :chatbot_reply, value: "" %>
         <div>
           <%= f.submit '送信', class: 'form-submit', id: "submit-button" , disabled: f.object.errors.any? %>
         </div>

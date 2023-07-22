@@ -13,6 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2023_07_10_030543) do
   create_table "conversations", charset: "utf8", force: :cascade do |t|
     t.text "content", null: false
+    t.text "chatbot_reply", null: false
     t.bigint "user_id", null: false
     t.integer "character_id", null: false
     t.datetime "created_at", null: false
