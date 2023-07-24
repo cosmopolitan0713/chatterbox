@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       sign_in @user, bypass: true
-      redirect_to user_path(current_user), notice: 'ユーザー情報が更新されました。'
+      redirect_to root_path
     else
       render :edit
     end

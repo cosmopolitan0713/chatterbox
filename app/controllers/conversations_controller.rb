@@ -4,6 +4,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.new
     @character = current_user&.character || Character.find_by(id: current_user&.character_id)
     @background = current_user&.user_background
+    @user = current_user
   end
 
   def new
@@ -19,7 +20,7 @@ class ConversationsController < ApplicationController
 
   # 返信テキストを保存
   @conversation.chatbot_reply = response_text
-
+  
     if @conversation.save
       render json: { status: "success", message: "会話が保存されました。" }
     else
@@ -40,6 +41,12 @@ class ConversationsController < ApplicationController
   def background_settings
     @conversation = Conversation.find(params[:id])
     @backgrounds = Background.all
+  end
+  
+  # 特定のキャラクターの会話履歴を取得する
+  def character_conversations
+    @character = Character.find(params[:character_id])
+    @conversations = @character.conversations.order(created_at: :desc)
   end
 
   private

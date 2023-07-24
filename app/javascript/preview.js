@@ -1,5 +1,5 @@
 // charactersの定義
-const characters = [
+const previewcharacters = [
   { id: 1, name: 'めたん', image: 'metan1.png', profile1: '何も考えていない' },
   { id: 2, name: 'ずんだもん', image: 'zunda1.png', profile1: '何も考えていない' },
   { id: 3, name: 'つむぎ', image: 'tumugi1.png', profile1: '何も考えていない' },
@@ -14,7 +14,7 @@ function handleCharacterSelectChange(event) {
   previewContainer.innerHTML = '';
   
   if (selectedCharacterId) {
-    const selectedCharacter = characters.find(character => character.id === Number(selectedCharacterId));
+    const selectedCharacter = previewcharacters.find(character => character.id === Number(selectedCharacterId));
     createPreview(selectedCharacter, previewContainer);
   }
 }
@@ -36,7 +36,7 @@ document.addEventListener('turbo:load', function() {
   if (!characterSelect) return null;
 
   const defaultCharacterId = 1;
-  createPreview(characters.find(character => character.id === defaultCharacterId), previewContainer);
+  createPreview(previewcharacters.find(character => character.id === defaultCharacterId), previewContainer);
 
   characterSelect.addEventListener('change', handleCharacterSelectChange);
 });
