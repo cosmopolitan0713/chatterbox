@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
   <div class="side_bar">
+    <div class="history">会話履歴</div>    
     <div class="side_bar_top">      
-      <h1>会話履歴</h1>    
       <div class="conversation-history">
         <% @conversations.each do |conversation| %>
           <div class="conversation">
-            <p><%= conversation.content %></p>
+            <%= link_to conversation.content, "#", class: "conversation-link", data: { content: conversation.content, chatbot_reply: conversation.chatbot_reply } %>
           </div>
         <% end %>
       </div>

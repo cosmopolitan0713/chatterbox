@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
-  
+  before_action :check_ownership, only: [:show, :edit]
+
   def show
     if user_signed_in?
       @user = current_user
       @character = current_user.character
     else
-      redirect_to new_user_session_path, alert: "ログインしてください。"
+      redirect_to new_user_session_path, alert: 'ログインしてください。'
     end
   end
 
@@ -18,12 +19,12 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       sign_in @user, bypass: true
-      redirect_to user_path(current_user), notice: 'ユーザー情報が更新されました。'
+      redirect_to root_path
     else
       render :edit
     end
   end
-  
+
   def destroy
     @user = User.find(params[:id])
     conversations = @user.conversations
@@ -48,4 +49,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :date_of_birth, :hobbies_id, :interests_id, :character_id)
   end
 
+  def check_ownership
+    # ログイン中のユーザーと表示するユーザーが異なる場合はリダイレクト
+    return if current_user.id == params[:id].to_i
+
+    redirect_to root_path, alert: '他のユーザーのページにはアクセスできません。'
+  end
 end

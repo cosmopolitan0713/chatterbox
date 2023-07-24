@@ -1,10 +1,10 @@
 class ConversationsController < ApplicationController
-  
   def index
     @conversations = Conversation.all.includes(:user)
     @conversation = Conversation.new
     @character = current_user&.character || Character.find_by(id: current_user&.character_id)
     @background = current_user&.user_background
+    @user = current_user
   end
 
   def new
@@ -12,20 +12,22 @@ class ConversationsController < ApplicationController
   end
 
   def create
-  @conversation = Conversation.new(conversations_params)
-  @character = Character.find(@conversation.character_id)
+    @conversation = Conversation.new(conversations_params)
+    @character = Character.find(@conversation.character_id)
+
+    # ChatGPTの返答内容を取得
+  response_text = params[:conversation][:response_text]
+
+  # 返信テキストを保存
+  @conversation.chatbot_reply = response_text
   
     if @conversation.save
-      redirect_to root_path, notice: "保存に成功しました"
+      render json: { status: "success", message: "会話が保存されました。" }
     else
-      @conversations = Conversation.all
-      render :index
+      render json: { status: "error", message: "保存に失敗しました。" }
     end
   end
 
-  def show
-  end
-  
   def character_select
     @conversation = Conversation.new
     @characters = Character.all
@@ -41,11 +43,16 @@ class ConversationsController < ApplicationController
     @backgrounds = Background.all
   end
   
+  # 特定のキャラクターの会話履歴を取得する
+  def character_conversations
+    @character = Character.find(params[:character_id])
+    @conversations = @character.conversations.order(created_at: :desc)
+  end
 
   private
-  
+
   def conversations_params
-    params.require(:conversation).permit(:content, :user_id, :character_id)
+    params.require(:conversation).permit(:content, :chatbot_reply, :character_id, :user_id)
   end
 
 end

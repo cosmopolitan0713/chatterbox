@@ -75,4 +75,5 @@
 /* ラジオボタンが選択された状態 */
 .character-radio input[type="radio"]:checked + label {
   background-color: orangered;
+  border: 2px solid red;
 }

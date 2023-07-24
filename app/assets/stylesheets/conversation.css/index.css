@@ -1,15 +1,11 @@
-conversation.index
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
-  height: 100%;
-}
-
 .wrapper {
+  width: 100%;
   display: flex;
   height: 90%;
 }
@@ -17,13 +13,63 @@ html, body {
 .side_bar {
   width: 300px;
   background-color:rgb(255, 240, 221);
-  overflow-y: auto;
 }
 
 .side_bar_top {
-  height: calc(100% - 100px);
+  height: calc(100% - 90px - 50px);
   color:#fff;
-  padding: 20px;
+  padding: 10px 20px;
+  overflow-y: auto;  
+}
+
+.history {
+  color: white;
+  height: 50px;
+  font-size: 30px;
+  font-weight: 800;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: darksalmon;
+}
+
+.conversation {
+  margin-top: 5px;
+}
+
+.conversation-link {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px 10px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  color: #333;
+  text-decoration: none;
+}
+
+/* 吹き出しの尖った部分 */
+.conversation-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  border: 10px solid transparent;
+  border-left-color: #f0f0f0;
+  transform: translateY(-50%);
+}
+
+/* 吹き出しのテキスト */
+.conversation-link span {
+  display: block;
+}
+
+/* クリック時のアニメーション */
+.conversation-link:hover {
+  background-color: #e0e0e0;
+}
+
+.side_bar_footer {
+  height: 50px;
 }
 
 /* メイン */
@@ -46,36 +92,74 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  
 }
 
 .background-image img {
   width: 100%;
   height: 100%;
   opacity: 0.8;
+  z-index: -1;
 }
+
 /* キャラクター */
 .top-character-image {
   position: absolute;
   bottom: 0;
   right: 0;
-  transform: translate(70%, 0%);
+  transform: translate(-20%, 0%);
+  width: 500px;
+  height: 600px;
 }
 .top-character-image img {
-  width: 30%;
-  height: 30%;
-}
-/* chatGPTからの返信スペース */
-.main-chat {
   width: 100%;
-  
+  height: 100%;
 }
 
-.output {
+/* chatGPTからの返信スペース */
+/* ChatGPTの返答を表示する要素のスタイル */
+.main-chat {
+  display: none;
+  font-size: 20px;
   padding: 10px;
-  margin-bottom: 10px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9); /* 背景色を透明にすることで背景画像が見えるようにする */
+  border: 1px solid black;
+  border-radius: 10px;
+  position: relative; /* 吹き出しの位置を調整するために必要 */
+  width: 40%; /* 吹き出しの最大幅を設定 */
+  z-index: 9999; /* 任意の大きな値を設定して背景画像より前に表示 */
+  margin: 20px;
 }
+
+/* 吹き出しの尻尾部分のスタイル */
+.main-chat::before {
+  content: "";
+  position: absolute;
+  bottom: -15px; /* 尻尾の位置を調整 */
+  left: 50%;
+  border-style: solid;
+  border-width: 15px 10px 0;
+  border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent; /* 背景色を透明にすることで背景画像が見えるようにする */
+}
+
+.user-message {
+  background-color: #ddf6e6; /* ユーザーのメッセージの背景色 */
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  clear: both;
+  float: left;
+
+}
+
+.chatbot-message {
+  background-color: #e6e6e6; /* ChatGPTのメッセージの背景色 */
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  clear: both;
+  float: right;
+}
+
 
 
 /* ユーザーテキスト入力欄 */

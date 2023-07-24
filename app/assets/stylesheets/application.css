@@ -19,6 +19,11 @@
   background-color:seashell;
   height: calc(100% - 100px);
 }
+
 body {
-  font-family: "Comic Sans MS";
+  font-family: "Nico Moji"; 
+}
+
+html, body {
+  height: 100%;
 }
