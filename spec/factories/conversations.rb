@@ -1,9 +1,10 @@
 FactoryBot.define do
   factory :conversation do
     content { Faker::Lorem.sentence }
+    chatbot_reply { Faker::Lorem.sentence }
     character_id { 1 }
 
-    association :user
+    association :user, strategy: :create
 
     factory :invalid_conversation do
       content { nil }

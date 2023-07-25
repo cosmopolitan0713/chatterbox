@@ -13,7 +13,7 @@ class User < ApplicationRecord
   belongs_to :background
 
   validates :username,     presence: true
-  validates :character_id, presence: true
+  validates :character_id, presence: { message: 'を選択してください' }
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates_format_of :password, with: PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers', on: :registration
