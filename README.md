@@ -22,9 +22,9 @@
 | -------------------- | ---------- | ------------------------------ | 
 | id(PK)               | integer    | null: false                    | 
 | content              | text       | null: false                    | 
+| chatbot_reply        | text       | null: false                    |
 | user(FK)             | references | null: false, foreign_key: true | 
 | character_id         | integer    | null: false                    |
-
 
 ### Association
 - belongs_to :user

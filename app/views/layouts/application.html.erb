@@ -14,7 +14,6 @@
       const api_Key = "<%= ENV['CHAT_GPT_KEY'] %>";
     </script>
     <script>const character = <%= @character.to_json.html_safe %>;</script>
-    <script>const hobbiesId = <%= raw @user.to_json %>.hobbies_id;</script>
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
 

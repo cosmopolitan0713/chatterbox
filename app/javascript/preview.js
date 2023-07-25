@@ -11,11 +11,14 @@ const previewcharacters = [
 function handleCharacterSelectChange(event) {
   const selectedCharacterId = event.target.value;
   const previewContainer = document.getElementById('previews');
-  previewContainer.innerHTML = '';
+
+  if (previewContainer) {
+    previewContainer.innerHTML = '';
   
-  if (selectedCharacterId) {
-    const selectedCharacter = previewcharacters.find(character => character.id === Number(selectedCharacterId));
-    createPreview(selectedCharacter, previewContainer);
+    if (selectedCharacterId) {
+      const selectedCharacter = previewcharacters.find(character => character.id === Number(selectedCharacterId));
+      createPreview(selectedCharacter, previewContainer);
+    }
   }
 }
 
@@ -30,6 +33,9 @@ function createPreview(character, container) {
 
 // DOM要素のキャッシュ
 document.addEventListener('turbo:load', function() {
+  const previewsItem = document.querySelector('.previews-item');
+  if (!previewsItem) return;
+
   const characterSelect = document.getElementById('user_character_id');
   const previewContainer = document.getElementById('previews');
 

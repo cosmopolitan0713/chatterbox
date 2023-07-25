@@ -5,23 +5,24 @@ import characters from './characters.js';
 
 const apiURL = "https://api.openai.com/v1/chat/completions";
 
+document.addEventListener("DOMContentLoaded", () => {
+  const userForm = document.querySelector(".user-form");
+  if (userForm) {
 // 要素を取得
 const mainChat = document.querySelector(".main-chat");
 const userMessage = document.querySelector(".user-message");
 const chatbotMessage = document.querySelector(".chatbot-message");
 
 // 初期化処理としてメッセージ表示エリアを空にする
-userMessage.innerHTML = '';
-chatbotMessage.innerHTML = '';
+function clearMessages() {
+  if (userMessage) userMessage.innerHTML = '';
+  if (chatbotMessage) chatbotMessage.innerHTML = '';
+}
 
 // 関数: 感情に応じて立ち絵を切り替える
 function showEmotion(characterId, emotion) {
   const character = characters[characterId];
   const characterImageElement = document.getElementById("character-image"); // 立ち絵要素を取得
-
-  console.log("characterId:", characterId);
-  console.log("emotion:", emotion);
-  console.log("character:", character);
 
   if (!characterImageElement) {
     console.error("立ち絵要素が見つかりません");
@@ -123,7 +124,6 @@ function updateEmotion(characterId, emotion, amount) {
       // ChatGPTにテキストを送信して返答を取得, // 応答から感情を判定
       const responseText = await requestChatAPI(apiURL, api_Key, systemMessage, text);
       const detectedEmotion = detectEmotion(responseText);
-      console.log(detectedEmotion);
 
       // 感情を更新
       updateEmotion(characterId, detectedEmotion, 1);
@@ -137,11 +137,7 @@ function updateEmotion(characterId, emotion, amount) {
       addMessage(responseText, 'chatbot-message', detectedEmotion); // チャットボットの返答を表示
 
       // 返信がある場合のみメッセージを表示する
-      if (responseText.trim() !== '') {
-        mainChat.style.display = 'block';
-      } else {
-        mainChat.style.display = 'none';
-      }
+      mainChat.style.display = responseText.trim() !== '' ? 'block' : 'none';
             
       // データベースに送信テキストと返信テキストを保存
       const formData = new FormData(form);
@@ -164,10 +160,8 @@ function updateEmotion(characterId, emotion, amount) {
         }
       } catch (error) {
         console.error("エラーが発生しました", error);
-        // エラー処理を記述する
       }
 
-      // フォームをクリア
       form.reset();
     } catch (error) {
       console.error(error);
@@ -175,7 +169,6 @@ function updateEmotion(characterId, emotion, amount) {
   }
 
 // フォームの送信時に非同期通信を行う
-document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("conversation-form");
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -197,4 +190,10 @@ document.addEventListener("DOMContentLoaded", () => {
   conversationLinks.forEach(link => {
     link.addEventListener("click", showConversation);
   });
+
+  // ページロード時に実行する初期化処理
+  clearMessages();
+  
+  }
 });
+

@@ -8,7 +8,9 @@ RSpec.describe Conversation, type: :model do
   describe 'メッセージ投稿' do
     context 'メッセージが投稿できる場合' do
       it 'すべての値が存在していれば保存できる' do
-        expect(@conversation).to be_valid
+        user = FactoryBot.create(:user) 
+        conversation = FactoryBot.build(:conversation, user: user) 
+        expect(conversation).to be_valid
       end
     end
 
@@ -17,6 +19,11 @@ RSpec.describe Conversation, type: :model do
         @conversation.content = ''
         @conversation.valid?
         expect(@conversation.errors.full_messages).to include('Contentを入力してください')
+      end
+      it 'chatbot_replyが空では保存できない' do
+        @conversation.chatbot_reply = ''
+        @conversation.valid?
+        expect(@conversation.errors.full_messages)
       end
       it 'userが紐付いてないと保存できない' do
         @conversation.user = nil

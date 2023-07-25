@@ -10,9 +10,8 @@ class BackgroundsController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       sign_in @user, bypass: true
-      redirect_to root_path, notice: '背景が更新されました。'
+      redirect_to root_path
     else
-      logger.debug @user.errors.inspect # ログ出力
       render :edit
     end
   end
