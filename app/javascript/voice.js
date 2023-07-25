@@ -1,3 +1,4 @@
+console.log('voice-test')
 export async function playVoice(responseText, characterId) {
   const voicevoxApiURL =
     "https://deprecatedapis.tts.quest/v2/voicevox/audio/?text=" +

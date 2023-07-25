@@ -1,3 +1,4 @@
+console.log('charactertest')
 const characters = {
   1: {
     name: "めたん",

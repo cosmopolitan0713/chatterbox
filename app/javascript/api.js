@@ -1,3 +1,4 @@
+console.log('api-test')
 export async function requestChatAPI(apiURL, api_Key, systemMessage, text){
   const headers = {
     "Content-Type": "application/json",

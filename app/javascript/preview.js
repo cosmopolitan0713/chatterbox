@@ -1,3 +1,4 @@
+console.log("previewtest")
 // charactersの定義
 const previewcharacters = [
   { id: 1, name: 'めたん', image: 'metan1.png', profile1: '何も考えていない' },

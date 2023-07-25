@@ -1,3 +1,4 @@
+console.log('messagetest')
 import { playVoice } from './voice.js';
 import { getCSRFToken } from './form.js';
 import { requestChatAPI } from './api.js';
@@ -193,7 +194,7 @@ function updateEmotion(characterId, emotion, amount) {
 
   // ページロード時に実行する初期化処理
   clearMessages();
-  
+
   }
 });
 
