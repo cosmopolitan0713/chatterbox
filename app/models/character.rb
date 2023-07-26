@@ -20,8 +20,8 @@ class Character < ActiveHash::Base
       profile2: 'カレー',
       profile3: '埼玉県内の高校に通うギャルの女の子。'
     },
-    { id: 9, name: '冥鳴ひまり', image: 'meimei1.png', profile1: '何も考えていない' },
-    { id: 11, name: '東北イタコ', image: 'itako1.png', profile1: '何も考えていない' }
+    { id: 9, name: '冥鳴ひまり', image: 'meimei1-e2f22153d130571f2f61d47a840ae3ec1670619b2e5e383966a7e204484bf7ce.png', profile1: '何も考えていない' },
+    { id: 11, name: '東北イタコ', image: 'itako1-ac62b67ce1c312e86b0b5e7f50a616c212362305468b1ebd3b85677e394819e3.png', profile1: '何も考えていない' }
 
   ]
 
