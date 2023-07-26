@@ -47,7 +47,7 @@ class ConversationsController < ApplicationController
   end
 
   def load_conversations
-    @conversations = Conversation.all.includes(:user)
+    @conversations = current_user.conversations.includes(:user)
   end
 
   def set_conversation

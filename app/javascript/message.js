@@ -259,7 +259,6 @@ function addMessage(message, messageType) {
     const characterId = document.querySelector("#character_id").value;
     playVoice(message, characterId);
   }
-
 }
 
 // 選択された会話の内容を表示する関数
