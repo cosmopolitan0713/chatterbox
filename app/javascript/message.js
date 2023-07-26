@@ -120,7 +120,7 @@ const characters = {
       不適切なテキストがあれば注意してください。",
       emotion: {
         normal: {
-          image: "zunda1.png"
+          image: "zunda1-5881d5aa1a1daa4eefe9ca6639864a4f1d3b1a9aaece0d4af870222806bb4d1f.png"
         },
         happy: {
           image: "zunda2.png"
