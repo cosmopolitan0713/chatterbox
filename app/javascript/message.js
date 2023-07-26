@@ -1,5 +1,6 @@
 console.log('messagetest')
 const apiURL = "https://api.openai.com/v1/chat/completions";
+const api_Key = gon.public_key
 
 function getCSRFToken() {
   const csrfTokenTag = document.querySelector("meta[name=csrf-token]");
