@@ -1,3 +1,4 @@
+console.log('deletetest')
 document.addEventListener('DOMContentLoaded', function() {
   const deleteContainer = document.querySelector('.show-delete');
  

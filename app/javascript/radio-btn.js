@@ -1,3 +1,4 @@
+console.log('btn-test')
 document.addEventListener('DOMContentLoaded', function() {
   applyRadioStyle('background-radio');
   applyRadioStyle('character-radio');
