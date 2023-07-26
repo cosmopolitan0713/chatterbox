@@ -259,6 +259,9 @@ function addMessage(message, messageType) {
     const characterId = document.querySelector("#character_id").value;
     playVoice(message, characterId);
   }
+
+  // スクロールを一番下に合わせる
+  mainChat.scrollTop = mainChat.scrollHeight;
 }
 
 // 選択された会話の内容を表示する関数
