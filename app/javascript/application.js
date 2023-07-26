@@ -1,5 +1,3 @@
-console.log("test")
-
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "controllers"
@@ -11,3 +9,4 @@ import "form"
 import "api"
 import "message"
 import "radio-btn"
+import "test"

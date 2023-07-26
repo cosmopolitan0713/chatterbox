@@ -1,8 +1,5 @@
 console.log('messagetest')
-import { playVoice } from './voice.js';
-import { getCSRFToken } from './form.js';
-import { requestChatAPI } from './api.js';
-import characters from './characters.js';
+
 
 const apiURL = "https://api.openai.com/v1/chat/completions";
 
