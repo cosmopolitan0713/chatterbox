@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <%= javascript_importmap_tags %> 
     <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+    <script>const api_Key = "<%= ENV['CHAT_GPT_KEY'] %>";</script>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>

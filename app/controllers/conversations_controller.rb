@@ -2,6 +2,7 @@ class ConversationsController < ApplicationController
   before_action :load_conversations, only: [:index, :character_conversations]
   before_action :set_conversation, only: [:background_settings]
   before_action :build_conversation, only: [:index, :new, :character_select]
+  before_action :set_public_key, only: [:index, :new, :create]
 
   def index
     @character = current_user&.character || Character.find_by(id: current_user&.character_id)
@@ -55,6 +56,10 @@ class ConversationsController < ApplicationController
 
   def build_conversation
     @conversation = Conversation.new
+  end
+  
+  def set_public_key
+    gon.public_key = ENV["CHAT_GPT_KEY"]
   end
 
 end
