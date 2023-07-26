@@ -68,7 +68,7 @@ const characters = {
       ユーザーが閲覧しているサイトの内容を考慮してください",
     emotion: {
       normal: {
-        image: "metan5-255d426a9ec2964c346eda6a6af26c9b25752425ad9a0fd5a6bde819ea8b51ac.png"
+        image: "/assets/metan5.png"
       },
       happy: {
         image: "/assets/metan7.png"
@@ -120,7 +120,7 @@ const characters = {
       不適切なテキストがあれば注意してください。",
       emotion: {
         normal: {
-          image: "zunda1-5881d5aa1a1daa4eefe9ca6639864a4f1d3b1a9aaece0d4af870222806bb4d1f.png"
+          image: "/assets/zunda1-5881d5aa1a1daa4eefe9ca6639864a4f1d3b1a9aaece0d4af870222806bb4d1f.png"
         },
         happy: {
           image: "zunda2.png"
