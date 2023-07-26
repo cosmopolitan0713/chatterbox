@@ -124,13 +124,13 @@ const characters = {
           image: "zunda1-5881d5aa1a1daa4eefe9ca6639864a4f1d3b1a9aaece0d4af870222806bb4d1f.png"
         },
         happy: {
-          image: "/assets/zunda2.png"
+          image: "zunda2-c917d97224e122f8f74632550a458ce6f35bcd5b89ce1c33db76673f8dacfbe5.png"
         },
         angry: {
-          image: "/assets/zunda3.png"
+          image: "zunda3-06a974849c4b3e45f6cbf7ab95bfd7710a5890556c2314a84c74c740d908f04d.png"
         },
         sad: {
-          image: "/assets/zunda4.png"
+          image: "zunda4-00d6a68e88b5c13348950bb71cedc081866a34425c95c1dee64f240c7e55a90d.png"
         }
       },
       defaultEmotion: "normal",
