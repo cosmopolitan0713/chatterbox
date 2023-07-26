@@ -1,4 +1,3 @@
-console.log("previewtest")
 // charactersの定義
 const previewcharacters = [
   { id: 1, name: 'めたん', image: 'metan1-5fce643c5d71b7c566acf697b27f4bd0da82db5e2a7302626564b888f43e4cf9.png', profile1: '何も考えていない' },
@@ -12,8 +11,6 @@ const previewcharacters = [
 function handleCharacterSelectChange(event) {
   const selectedCharacterId = event.target.value;
   const previewContainer = document.getElementById('previews');
-  console.log('selectedCharacterId')
-  console.log('previewContainer')
 
   if (previewContainer) {
     previewContainer.innerHTML = '';

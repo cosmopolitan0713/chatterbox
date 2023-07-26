@@ -1,4 +1,3 @@
-console.log('messagetest')
 const apiURL = "https://api.openai.com/v1/chat/completions";
 const api_Key = gon.public_key
 
@@ -121,7 +120,7 @@ const characters = {
       不適切なテキストがあれば注意してください。",
       emotion: {
         normal: {
-          image: "zunda1-5881d5aa1a1daa4eefe9ca6639864a4f1d3b1a9aaece0d4af870222806bb4d1f.png"
+          image: "zunda1.png"
         },
         happy: {
           image: "zunda2-c917d97224e122f8f74632550a458ce6f35bcd5b89ce1c33db76673f8dacfbe5.png"
