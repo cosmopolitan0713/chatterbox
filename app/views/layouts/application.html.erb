@@ -4,13 +4,13 @@
     <title>Chatterbox</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>    
+    <%= csp_meta_tag %>
+    <%= javascript_importmap_tags %> 
     <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="text" src="preview.js"></script>
-    <%= javascript_importmap_tags %>
-    <script type="module" src="message.js"></script>
+    
+    
   </head>
   <body>
     <%= yield %>   
