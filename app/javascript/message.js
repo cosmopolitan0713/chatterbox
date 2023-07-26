@@ -123,13 +123,13 @@ const characters = {
           image: "zunda1.png"
         },
         happy: {
-          image: "zunda2-c917d97224e122f8f74632550a458ce6f35bcd5b89ce1c33db76673f8dacfbe5.png"
+          image: "zunda2.png"
         },
         angry: {
-          image: "zunda3-06a974849c4b3e45f6cbf7ab95bfd7710a5890556c2314a84c74c740d908f04d.png"
+          image: "zunda3.png"
         },
         sad: {
-          image: "zunda4-00d6a68e88b5c13348950bb71cedc081866a34425c95c1dee64f240c7e55a90d.png"
+          image: "zunda4.png"
         }
       },
       defaultEmotion: "normal",
