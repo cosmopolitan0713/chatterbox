@@ -345,6 +345,9 @@ function updateEmotion(characterId, emotion, amount) {
   // Chat処理を実行する関数
   async function chat(characterId, text, form) {
     try {
+      // メッセージを追加して表示
+      addMessage(text, 'user-message'); // ユーザーメッセージを表示
+
       // キャラクター情報を取得
       const character = characters[characterId];
       const systemMessage = character.system_message;
@@ -361,11 +364,9 @@ function updateEmotion(characterId, emotion, amount) {
       showEmotion(characterId, detectedEmotion);
 
       // メッセージを追加して表示
-      addMessage(text, 'user-message'); // ユーザーメッセージを表示
       addMessage(responseText, 'chatbot-message', detectedEmotion); // チャットボットの返答を表示
 
-      // 返信がある場合のみメッセージを表示する
-      mainChat.style.display = responseText.trim() !== '' ? 'block' : 'none';
+      
             
       // データベースに送信テキストと返信テキストを保存
       const formData = new FormData(form);
@@ -391,6 +392,8 @@ function updateEmotion(characterId, emotion, amount) {
       }
 
       form.reset();
+
+      mainChat.style.display = 'block';
     } catch (error) {
       console.error(error);
     }
