@@ -1,7 +1,7 @@
 console.log("previewtest")
 // charactersの定義
 const previewcharacters = [
-  { id: 1, name: 'めたん', image: 'metan1.png', profile1: '何も考えていない' },
+  { id: 1, name: 'めたん', image: 'metan1-5fce643c5d71b7c566acf697b27f4bd0da82db5e2a7302626564b888f43e4cf9.png', profile1: '何も考えていない' },
   { id: 2, name: 'ずんだもん', image: 'zunda1.png', profile1: '何も考えていない' },
   { id: 3, name: 'つむぎ', image: 'tumugi1.png', profile1: '何も考えていない' },
   { id: 9, name: '冥鳴', image: 'meimei1.png', profile1: '何も考えていない' },
@@ -12,6 +12,8 @@ const previewcharacters = [
 function handleCharacterSelectChange(event) {
   const selectedCharacterId = event.target.value;
   const previewContainer = document.getElementById('previews');
+  console.log('selectedCharacterId')
+  console.log('previewContainer')
 
   if (previewContainer) {
     previewContainer.innerHTML = '';
@@ -26,7 +28,7 @@ function handleCharacterSelectChange(event) {
 // プレビューの作成
 function createPreview(character, container) {
   const characterPreview = document.createElement('img');
-  characterPreview.src = character.image;
+  characterPreview.src = '/assets/' + character.image;
   characterPreview.alt = 'Character Preview';
   characterPreview.classList.add('preview-image');
   container.appendChild(characterPreview);
