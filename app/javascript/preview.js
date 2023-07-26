@@ -26,7 +26,7 @@ function handleCharacterSelectChange(event) {
 // プレビューの作成
 function createPreview(character, container) {
   const characterPreview = document.createElement('img');
-  characterPreview.src = '/assets/' + character.image;
+  characterPreview.src = character.image;
   characterPreview.alt = 'Character Preview';
   characterPreview.classList.add('preview-image');
   container.appendChild(characterPreview);
