@@ -68,16 +68,16 @@ const characters = {
       ユーザーが閲覧しているサイトの内容を考慮してください",
     emotion: {
       normal: {
-        image: "/assets/metan5.png"
+        image: "/assets/metan5-255d426a9ec2964c346eda6a6af26c9b25752425ad9a0fd5a6bde819ea8b51ac.png"
       },
       happy: {
-        image: "/assets/metan7.png"
+        image: "/assets/metan7-a0742df4c633a2d77e15d7bd39085ed688e805995c5f71f83965ea8b715244f4.png"
       },
       angry: {
-        image: "/assets/metan6.png"
+        image: "/assets/metan6-3418806b8c68ad4c1ac8764f9cd0c527746d4069e0d810ef5afdac546454161d.png"
       },
       sad: {
-        image: "/assets/metan3.png"
+        image: "/assets/metan3-3d23434e3876ba0f64ef4d9bf108994113bd53388733b963a46fbbe417af91de.png"
       }
     },
     defaultEmotion: "normal",
@@ -123,13 +123,13 @@ const characters = {
           image: "/assets/zunda1-5881d5aa1a1daa4eefe9ca6639864a4f1d3b1a9aaece0d4af870222806bb4d1f.png"
         },
         happy: {
-          image: "zunda2.png"
+          image: "/assets/zunda2-c917d97224e122f8f74632550a458ce6f35bcd5b89ce1c33db76673f8dacfbe5.png"
         },
         angry: {
-          image: "zunda3.png"
+          image: "/assets/zunda3-06a974849c4b3e45f6cbf7ab95bfd7710a5890556c2314a84c74c740d908f04d.png"
         },
         sad: {
-          image: "zunda4.png"
+          image: "/assets/zunda4-00d6a68e88b5c13348950bb71cedc081866a34425c95c1dee64f240c7e55a90d.png"
         }
       },
       defaultEmotion: "normal",
@@ -173,16 +173,16 @@ const characters = {
         ユーザーが閲覧しているサイトの内容を考慮してください",
       emotion: {
         normal: {
-          image: "/assets/tumugi2.png"
+          image: "/assets/tumugi2-90c5314c2efb995d9b4b432900a0fafb9b505a633da78fd92f7607d9d212676e.png"
         },
         happy: {
-          image: "/assets/tumugi3.png"
+          image: "/assets/tumugi3-6e04b5828f991c86777eb00ebc8006459f9f908b59e3d4a91fef0d789e462994.png"
         },
         angry: {
-          image: "/assets/tumugi5.png"
+          image: "/assets/tumugi5-85bca675b5682b18cf307caaaf9d51261c4770e9b19a482d83547ad5cc26366f.png"
         },
         sad: {
-          image: "/assets/tumugi4.png"
+          image: "/assets/tumugi4-d75cc667ffecbc216360b569467fa32b81526faf38d6a3d925559a5b33a61608.png"
         }
       },
       defaultEmotion: "normal",
