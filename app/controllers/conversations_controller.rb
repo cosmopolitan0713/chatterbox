@@ -38,6 +38,7 @@ class ConversationsController < ApplicationController
 
   def background_settings
     @backgrounds = Background.all
+    @conversation = Conversation.find(params[:id])
   end
   
   private
@@ -47,11 +48,13 @@ class ConversationsController < ApplicationController
   end
 
   def load_conversations
-    @conversations = current_user.conversations.includes(:user)
+    @conversations = current_user.conversations.includes(:user) if current_user
   end
 
   def set_conversation
-    @conversation = Conversation.find(params[:id])
+    if @conversations.nil?
+      redirect_to root_path, alert: "ログインしてください。"
+    end
   end
 
   def build_conversation
