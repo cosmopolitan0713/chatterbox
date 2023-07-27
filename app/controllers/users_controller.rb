@@ -13,6 +13,9 @@ class UsersController < ApplicationController
   def edit
     @user = current_user
     @character = current_user.character
+
+    # ユーザーが存在しない場合は404エラーを返す
+    render_not_found if @user.nil?
   end
 
   def update

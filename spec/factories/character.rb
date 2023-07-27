@@ -2,9 +2,6 @@
 
 FactoryBot.define do
   factory :character do
-    sequence(:name) { |n| "Character #{n}" } # 連番を持つ名前を生成する例
-    # 他の属性を必要に応じて追加してください
-    # 例：image, profile1, profile2, profile3など
     name { 'ずんだもん' }
     # imageは画像ファイル名を指定する属性と仮定します
     image { 'metan1.png' }
