@@ -6,6 +6,8 @@
         <% @conversations.each do |conversation| %>
           <div class="conversation">
             <%= link_to conversation.content, "#", class: "conversation-link", data: { content: conversation.content, chatbot_reply: conversation.chatbot_reply } %>
+            <%= link_to "test", conversation_path(conversation), class: "delete-conversation", remote: true, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+            <i class="fa-solid fa-eraser icon"></i>
           </div>
         <% end %>
       </div>

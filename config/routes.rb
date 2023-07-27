@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root to: "conversations#index"
   
-  resources :conversations, only: [:index, :new, :create] 
+  resources :conversations, only: [:index, :new, :create, :destroy] 
   resources :users, only: [:show, :edit, :update, :destroy] 
   resources :characters, only: [:edit, :update]
   resources :backgrounds, only: [:edit, :update]

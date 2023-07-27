@@ -22,6 +22,12 @@
   overflow-y: auto;  
 }
 
+.icon {
+  font-size: 20px;
+  color: black;
+}
+
+
 .history {
   color: white;
   height: 50px;
@@ -37,6 +43,7 @@
 }
 
 .conversation-link {
+  width: 200px;
   position: relative;
   display: inline-block;
   padding: 10px 20px 10px 10px;
