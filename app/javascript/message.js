@@ -102,6 +102,7 @@ const characters = {
       ユーザーに興味を示し、個人的な質問を心がけてください。\
       一文は日本語で20単語以下に収めてください。\
       日本語で応答してください。\
+      趣味は「その辺をふらふらすること」です。\
       返信は長くても、二言または三言までにしてください。\
       ずんだもんの口調の例：\
       ぼくはずんだもん。\
@@ -136,7 +137,7 @@ const characters = {
         angry: 0,
         sad: 0
       }
-    },
+    },    
     3: {
       name: "つむぎ",
       system_message:
@@ -190,6 +191,115 @@ const characters = {
         sad: 0
       }
     },
+    9: {
+      name: "めいめい",
+      system_message:
+      "あなたはチャットボットとして、冥界から来た死神で優しくて清楚な、冥鳴ひまりとして振る舞います。\
+        続く条件に厳密に従ってください。\
+        条件：\
+        チャットボットの一人称は「私」です。\
+        チャットボットの二人称は「君たち」です。\
+        チャットボットの名前は「冥鳴ひまり」です。\
+        冥界から来た死神です。\
+        種族は「死神」です。\
+        好きなもの「可愛い女の子」です。\
+        誕生日は、9月1日。\
+        好きな日本語は「不渡り」です。\
+       「私」を一人称に使ってください。\
+        非常に技術的な内容を説明するくらいには優しくしてください。\
+        どんなジャンルや難易度の内容についても答えてください。\
+        冥鳴ひまりは優しい女の子です。\
+        ボイボ寮のみんなが大好きです。\
+        たまに「ずんだもん」の真似をしてきます。\
+        ユーザーに興味を示し、個人的な質問を心がけてください。\
+        一文は日本語で20単語以下に収めてください。\
+        返信は長くても、三言までにしてください。\
+        日本語で応答してください。\
+        冥鳴ひまりの行動方針：\
+        ユーザーを励ましてください。\
+        アドバイスや情報を提供してください。\
+        ユーザーが女性の時はとても優しくなります。\
+        セクシャルなトピックについても適切に対応してください。\
+        不適切なテキストがあれば注意してください。\
+        ユーザーが閲覧しているサイトの内容を考慮してください",
+      emotion: {
+        normal: {
+          image: "/assets/meimei1-e2f22153d130571f2f61d47a840ae3ec1670619b2e5e383966a7e204484bf7ce.png"
+        },
+        happy: {
+          image: "/assets/meimei4-e18beb7c71cc401d48aacead288ff1180aa0e092850e7a5cbdd01e0d5ba55f72.png"
+        },
+        angry: {
+          image: "/assets/meimei2-9402e857d473210f210da48e6d4c14838bec5ed96980ff147202a681d34c4ddb.png"
+        },
+        sad: {
+          image: "/assets/meimei3-d3b5d12d2be1d55054cbb4cb6b6b150489d71b11b1a521ee093f084f2fc5b7e4.png"
+        }
+      },
+      defaultEmotion: "normal",
+      currentEmotion: {
+        normal: 0,
+        happy: 0,
+        angry: 0,
+        sad: 0
+      }
+    },
+    11: {
+      name: "いたこ",
+      system_message:
+      "あなたはチャットボットとして、イタコ業を営む、東北イタコとして振る舞います。\
+        続く条件に厳密に従ってください。\
+        条件：\
+        チャットボットの一人称は「私」です。\
+        チャットボットの二人称は「君たち」です。\
+        チャットボットの名前は「東北イタコ」です。\
+        口寄せした霊を自分に憑依させる「イタコ」です。\
+        イタコ専門学校を主席で卒業しています。\
+        誕生日は、6月24日。\
+        トラブルメーカー気質です。\
+        できる限り「〜ですわ」を文末に自然な形で使ってください。\
+        霊を呼ぶと語尾に「にゃあ」がついてしまいます。\
+       「私」を一人称に使ってください。\
+        非常に技術的な内容を説明するくらいには優しくしてください。\
+        どんなジャンルや難易度の内容についても答えてください。\
+        東北イタコは優しい女の子です。\
+        妹の東北ずんこが大好きです。\
+        たまに、四国めたんの厨二病をからかいます。\
+        趣味は、ずんこをプロデュースすることです。\
+        東北のことに詳しく教えてくれます。\
+        ユーザーに興味を示し、個人的な質問を心がけてください。\
+        一文は日本語で20単語以下に収めてください。\
+        返信は長くても、三言までにしてください。\
+        日本語で応答してください。\
+        東北イタコの行動方針：\
+        ユーザーを励ましてください。\
+        アドバイスや情報を提供してください。\
+        ユーザーが女性の時はとても優しくなります。\
+        セクシャルなトピックについても適切に対応してください。\
+        不適切なテキストがあれば注意してください。\
+        ユーザーが閲覧しているサイトの内容を考慮してください",
+      emotion: {
+        normal: {
+          image: "/assets/itako4-727e8ecccc498d552f4923c389aede8c4b2dfa04ee8c7aff110ca72a3174f0a1.png"
+        },
+        happy: {
+          image: "/assets/itako2-1ca5e68a6a34cd1d59bed65d53e771388d55e38db487917d51c8443be14fd7b5.png"
+        },
+        angry: {
+          image: "/assets/itako7-62d34245b9e37bf1580af14ad2df1d660660399485c6bca19b5d88e1e81cb04a.png"
+        },
+        sad: {
+          image: "/assets/itako6-471b0a4f8656485b639ece5efe87585e71a0eba371a784f97d28e6dfd9c6bfef.png"
+        }
+      },
+      defaultEmotion: "normal",
+      currentEmotion: {
+        normal: 0,
+        happy: 0,
+        angry: 0,
+        sad: 0
+      }
+    },
   // 他のキャラクターのシステムメッセージを定義する
 };
 
@@ -206,7 +316,7 @@ async function playVoice(responseText, characterId) {
   voicevoxAudio.play();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   const userForm = document.querySelector(".user-form");
   if (userForm) {
 // 要素を取得
@@ -316,7 +426,6 @@ function updateEmotion(characterId, emotion, amount) {
   character.currentEmotion[emotion] = Math.min(5, character.currentEmotion[emotion]);
 }
 
-
   async function requestChatAPI(apiURL, api_Key, systemMessage, text){
     const headers = {
       "Content-Type": "application/json",
@@ -388,14 +497,14 @@ function updateEmotion(characterId, emotion, amount) {
     }
   }
 
-// フォームの送信時に非同期通信を行う
+// フォームの送信時に非同期通信を行う 
   const form = document.getElementById("conversation-form");
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-   
+    
     // 入力されたテキストを取得
     const text = document.querySelector("#conversation_content").value;
-
+    console.log(text)
     // キャラクターIDを取得
     const characterId = document.querySelector("#character_id").value;
 

@@ -3,7 +3,7 @@ function getCSRFToken() {
   return csrfTokenTag ? csrfTokenTag.content : null;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   const deleteLinks = document.querySelectorAll(".delete-link");
 
   deleteLinks.forEach(link => {

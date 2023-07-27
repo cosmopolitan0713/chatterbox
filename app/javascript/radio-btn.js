@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("turbo:load", function() {
   applyRadioStyle('background-radio');
   applyRadioStyle('character-radio');
 });

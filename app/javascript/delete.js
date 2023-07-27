@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("turbo:load", function() {
   const deleteContainer = document.querySelector('.show-delete');
  
   if (deleteContainer) {
