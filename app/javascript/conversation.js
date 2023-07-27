@@ -4,7 +4,7 @@ function getCSRFToken() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const deleteLinks = document.querySelectorAll(".delete-conversation");
+  const deleteLinks = document.querySelectorAll(".delete-link");
 
   deleteLinks.forEach(link => {
     link.addEventListener("click", (event) => {

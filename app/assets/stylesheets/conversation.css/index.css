@@ -22,6 +22,16 @@
   overflow-y: auto;  
 }
 
+.delete-conversation {
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* オプション：アイコンにカーソルを当てた際にカーソルの形状をポインターにする場合 */
+.delete-conversation:hover {
+  cursor: pointer;
+}
+
 .icon {
   font-size: 20px;
   color: black;
