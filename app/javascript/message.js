@@ -6,27 +6,6 @@ function getCSRFToken() {
   return csrfTokenTag ? csrfTokenTag.content : null;
 }
 
-async function requestChatAPI(apiURL, api_Key, systemMessage, text){
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${api_Key}`,
-  };
-
-  const messages = [
-    { role: "system", content: systemMessage },
-    { role: "user", content: text },
-  ];
-
-  const payload = {
-    model: "gpt-3.5-turbo",
-    max_tokens: 128,
-    messages: messages,
-  };
-
-  const response = await axios.post(apiURL, payload, { headers: headers });
-  return response.data.choices[0].message.content;
-}
-
 // キャラクター設定
 const characters = {
   1: {
@@ -300,7 +279,6 @@ const characters = {
         sad: 0
       }
     },
-  // 他のキャラクターのシステムメッセージを定義する
 };
 
 async function playVoice(responseText, characterId) {
@@ -426,89 +404,83 @@ function updateEmotion(characterId, emotion, amount) {
   character.currentEmotion[emotion] = Math.min(5, character.currentEmotion[emotion]);
 }
 
-  async function requestChatAPI(apiURL, api_Key, systemMessage, text){
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${api_Key}`,
-    };
+async function requestChatAPI(apiURL, api_Key, systemMessage, text){
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${api_Key}`,
+  };
 
-    const messages = [
-      { role: "system", content: systemMessage },
-      { role: "user", content: text },
-    ];
+  const messages = [
+    { role: "system", content: systemMessage },
+    { role: "user", content: text },
+  ];
 
-    const payload = {
-      model: "gpt-3.5-turbo",
-      max_tokens: 128,
-      messages: messages,
-    };
+  const payload = {
+    model: "gpt-3.5-turbo",
+    max_tokens: 128,
+    messages: messages,
+  };
 
-    const response = await axios.post(apiURL, payload, { headers: headers });
-    return response.data.choices[0].message.content;
-  }
+  const response = await axios.post(apiURL, payload, { headers: headers });
+  return response.data.choices[0].message.content;
+}
 
-  // Chat処理を実行する関数
-  async function chat(characterId, text, form) {
-    try {
-      // メッセージを追加して表示
-      addMessage(text, 'user-message'); // ユーザーメッセージを表示
+// Chat処理を実行する関数
+async function chat(characterId, text, form) {
+  try {
+    // メッセージを追加して表示
+    addMessage(text, 'user-message'); // ユーザーメッセージを表示
 
-      // キャラクター情報を取得
-      const character = characters[characterId];
-      const systemMessage = character.system_message;
+    // キャラクター情報を取得
+    const character = characters[characterId];
+    const systemMessage = character.system_message;
  
-      // ChatGPTにテキストを送信して返答を取得, // 応答から感情を判定
-      const responseText = await requestChatAPI(apiURL, api_Key, systemMessage, text);
-      const detectedEmotion = detectEmotion(responseText);
+    // ChatGPTにテキストを送信して返答を取得, // 応答から感情を判定
+    const responseText = await requestChatAPI(apiURL, api_Key, systemMessage, text);
+    const detectedEmotion = detectEmotion(responseText);
 
-      // 更新
-      updateEmotion(characterId, detectedEmotion, 1);
-      showEmotion(characterId, detectedEmotion);
-      addMessage(responseText, 'chatbot-message', detectedEmotion);
+    // 更新
+    updateEmotion(characterId, detectedEmotion, 1);
+    showEmotion(characterId, detectedEmotion);
+    addMessage(responseText, 'chatbot-message', detectedEmotion);
 
-      // データベースに送信テキストと返信テキストを保存
-      const formData = new FormData(form);
-      formData.append("conversation[response_text]", responseText);
+    // データベースに送信テキストと返信テキストを保存
+    const formData = new FormData(form);
+    formData.append("conversation[response_text]", responseText);
   
-      try {
-        const response = await fetch("/conversations", {
-          method: "POST",
-          body: formData,
-          headers: {
-            "X-CSRF-Token": getCSRFToken(),
-          },
-        });
+    try {
+      const response = await fetch("/conversations", {
+        method: "POST",
+        body: formData,
+        headers: {
+          "X-CSRF-Token": getCSRFToken(),
+        },
+      });
   
-        if (response.ok) {
-          const responseData = await response.json();
-          console.log(responseData); // 保存が成功した場合のレスポンス
-        } else {
-          console.error("保存に失敗しました");
-        }
-      } catch (error) {
-        console.error("エラーが発生しました", error);
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log(responseData); // 保存が成功した場合のレスポンス
+      } else {
+        console.error("保存に失敗しました");
       }
-
-      form.reset();
-
-      mainChat.style.display = 'block';
     } catch (error) {
-      console.error(error);
+      console.error("エラーが発生しました", error);
     }
+
+    form.reset();
+
+    mainChat.style.display = 'block';
+  } catch (error) {
+    console.error(error);
   }
+}
 
 // フォームの送信時に非同期通信を行う 
   const form = document.getElementById("conversation-form");
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    
-    // 入力されたテキストを取得
     const text = document.querySelector("#conversation_content").value;
-    console.log(text)
-    // キャラクターIDを取得
     const characterId = document.querySelector("#character_id").value;
-
-    // Chat処理を呼び出し、チャットの処理を実行
     await chat(characterId, text, form);
   });
 
@@ -523,4 +495,3 @@ function updateEmotion(characterId, emotion, amount) {
 
   }
 });
-

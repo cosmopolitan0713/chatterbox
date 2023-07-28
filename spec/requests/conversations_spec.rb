@@ -11,15 +11,15 @@ RSpec.describe ConversationsController, type: :controller do
     @conversations = [@conversation]
   end
 
-  describe "GET #index" do
+  describe 'GET #index' do
     it 'indexアクションにリクエストすると正常にレスポンスが返ってくる' do
       routes.draw do
-        root "conversations#index"
+        root 'conversations#index'
       end
       get :index
       expect(response).to have_http_status(200)
     end
-  
+
     it 'indexアクションにリクエストすると@conversationsにデータが含まれている' do
       get :index
       conversations = assigns(:conversations)
@@ -33,7 +33,7 @@ RSpec.describe ConversationsController, type: :controller do
       expect(assigns(:character)).to eq(@character)
     end
 
-    it 'indexアクションにリクエストすると@characterにcurrent_user.characterが存在しない場合、current_user.character_idを使ってCharacterを検索して割り当てる' do      
+    it 'indexアクションにリクエストすると@characterにcurrent_user.characterが存在しない場合、current_user.character_idを使ってCharacterを検索して割り当てる' do
       user = FactoryBot.create(:user)
       sign_in(user)
       expect(assigns(:character)).to be_nil
@@ -45,7 +45,7 @@ RSpec.describe ConversationsController, type: :controller do
       user = FactoryBot.create(:user)
       sign_in(user)
       background = FactoryBot.create(:background)
-      user.update(background: background)
+      user.update(background:)
       get :index
       expect(assigns(:background)).to eq(background)
     end
@@ -54,8 +54,5 @@ RSpec.describe ConversationsController, type: :controller do
       get :index
       expect(assigns(:user)).to eq(@user)
     end
-  end  
+  end
 end
-
-  
-

@@ -8,8 +8,8 @@ RSpec.describe Conversation, type: :model do
   describe 'メッセージ投稿' do
     context 'メッセージが投稿できる場合' do
       it 'すべての値が存在していれば保存できる' do
-        user = FactoryBot.create(:user) 
-        conversation = FactoryBot.build(:conversation, user: user) 
+        user = FactoryBot.create(:user)
+        conversation = FactoryBot.build(:conversation, user:)
         expect(conversation).to be_valid
       end
     end

@@ -19,20 +19,18 @@ class ConversationsController < ApplicationController
 
     # 返信テキストを保存
     @conversation.chatbot_reply = params[:conversation][:response_text]
-  
+
     if @conversation.save
-      render json: { status: "success", message: "会話が保存されました。"}
+      render json: { status: 'success', message: '会話が保存されました。' }
     else
-      render json: { status: "error", message: "保存に失敗しました。" }
+      render json: { status: 'error', message: '保存に失敗しました。' }
     end
   end
 
   def destroy
     @conversation = Conversation.find(params[:id])
     @conversation.destroy
-    
   end
-  
 
   def character_select
     @characters = Character.all
@@ -47,7 +45,7 @@ class ConversationsController < ApplicationController
     @backgrounds = Background.all
     @conversation = Conversation.find(params[:id])
   end
-  
+
   private
 
   def conversation_params
@@ -59,17 +57,16 @@ class ConversationsController < ApplicationController
   end
 
   def set_conversation
-    if @conversations.nil?
-      redirect_to root_path, alert: "ログインしてください。"
-    end
+    return unless @conversations.nil?
+
+    redirect_to root_path, alert: 'ログインしてください。'
   end
 
   def build_conversation
     @conversation = Conversation.new
   end
-  
-  def set_public_key
-    gon.public_key = ENV["CHAT_GPT_KEY"]
-  end
 
+  def set_public_key
+    gon.public_key = ENV['CHAT_GPT_KEY']
+  end
 end
