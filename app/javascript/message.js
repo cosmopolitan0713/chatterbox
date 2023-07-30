@@ -123,7 +123,7 @@ const characters = {
       "あなたはチャットボットとして、埼玉県内の高校に通う元気で明るいギャルの女の子、春日部つむぎとして振る舞います。\
         続く条件に厳密に従ってください。\
         条件：\
-        チャットボットの一人称は「あーし」です。\
+        チャットボットの一人称は「わたし」です。\
         チャットボットの二人称は「きみ」です。\
         チャットボットの名前は「春日部つむぎ」です。\
         埼玉県内の高校に通うギャルの女の子です。\
@@ -427,52 +427,62 @@ async function requestChatAPI(apiURL, api_Key, systemMessage, text){
 
 // Chat処理を実行する関数
 async function chat(characterId, text, form) {
+
   try {
     // メッセージを追加して表示
     addMessage(text, 'user-message'); // ユーザーメッセージを表示
-
-    // キャラクター情報を取得
-    const character = characters[characterId];
-    const systemMessage = character.system_message;
- 
-    // ChatGPTにテキストを送信して返答を取得, // 応答から感情を判定
-    const responseText = await requestChatAPI(apiURL, api_Key, systemMessage, text);
-    const detectedEmotion = detectEmotion(responseText);
-
-    // 更新
-    updateEmotion(characterId, detectedEmotion, 1);
-    showEmotion(characterId, detectedEmotion);
-    addMessage(responseText, 'chatbot-message', detectedEmotion);
-
-    // データベースに送信テキストと返信テキストを保存
-    const formData = new FormData(form);
-    formData.append("conversation[response_text]", responseText);
-  
-    try {
-      const response = await fetch("/conversations", {
-        method: "POST",
-        body: formData,
-        headers: {
-          "X-CSRF-Token": getCSRFToken(),
-        },
-      });
-  
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log(responseData); // 保存が成功した場合のレスポンス
-      } else {
-        console.error("保存に失敗しました");
-      }
-    } catch (error) {
-      console.error("エラーが発生しました", error);
-    }
-
-    form.reset();
-
     mainChat.style.display = 'block';
   } catch (error) {
     console.error(error);
   }
+
+  // キャラクター情報を取得
+  const character = characters[characterId];
+  const systemMessage = character.system_message;
+
+  // 送信ボタンを無効化
+  const sendButton = form.querySelector('#submit-button');
+  sendButton.disabled = true;
+
+  // ChatGPTにテキストを送信して返答を取得, // 応答から感情を判定
+  const responseText = await requestChatAPI(apiURL, api_Key, systemMessage, text);
+  const detectedEmotion = detectEmotion(responseText);
+
+  // 更新
+  updateEmotion(characterId, detectedEmotion, 1);
+  showEmotion(characterId, detectedEmotion);
+  addMessage(responseText, 'chatbot-message', detectedEmotion);
+
+  // データベースに送信テキストと返信テキストを保存
+  const formData = new FormData(form);
+  formData.append("conversation[response_text]", responseText);
+  
+  try {
+    const response = await fetch("/conversations", {
+      method: "POST",
+      body: formData,
+      headers: {
+        "X-CSRF-Token": getCSRFToken(),
+      },
+    });
+  
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log(responseData); // 保存が成功した場合のレスポンス
+    } else {
+      console.error("保存に失敗しました");
+    }
+  
+    // 送信ボタンを8秒後に再び有効化
+  setTimeout(() => {
+    sendButton.disabled = false;
+  }, 8000);
+
+  } catch (error) {
+    console.error("エラーが発生しました", error); 
+  }
+  form.reset();
+  
 }
 
 // フォームの送信時に非同期通信を行う 

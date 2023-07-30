@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @character = current_user.character
+    @character = current_user.character || current_user.build_character
 
     # ユーザーが存在しない場合は404エラーを返す
     render_not_found if @user.nil?
@@ -20,11 +20,12 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    @character = current_user.character
     if @user.update(user_params)
       sign_in @user, bypass: true
       redirect_to root_path
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

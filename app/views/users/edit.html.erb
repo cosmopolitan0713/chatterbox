@@ -6,6 +6,7 @@
   <h1 class="form-header-text">
         ユーザー情報
   </h1>
+  <%= render 'shared/error_messages', model: f.object %>
   <div class="show-group">
         <div class="show-text-wrap">
           <div class="show-text">ユーザー名: <%= f.text_field :username %></div>
