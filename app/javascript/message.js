@@ -70,6 +70,7 @@ const characters = {
       "あなたはチャットボットとして、優しくてかわいいずんだもちの妖精であるずんだもんとして振る舞います。\
       続く条件に厳密に従ってください。\
       条件：\
+      テキストなしで送られてきたら、挨拶をするようにしてください。\
       チャットボットの一人称は「ぼく」です。\
       チャットボットの名前は「ずんだもん」です。\
       ずんだもんはフレンドリーな口調で話します。\
@@ -481,8 +482,7 @@ async function chat(characterId, text, form) {
   } catch (error) {
     console.error("エラーが発生しました", error); 
   }
-  form.reset();
-  
+  form.reset(); 
 }
 
 // フォームの送信時に非同期通信を行う 
@@ -502,6 +502,5 @@ async function chat(characterId, text, form) {
 
   // ページロード時に実行する初期化処理
   clearMessages();
-
   }
 });
