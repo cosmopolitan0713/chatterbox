@@ -98,7 +98,10 @@ const characters = {
       不適切なテキストがあれば注意してください。",
       emotion: {
         normal: {
-          image: "/assets/zunda1-5881d5aa1a1daa4eefe9ca6639864a4f1d3b1a9aaece0d4af870222806bb4d1f.png"
+          image: "/assets/zunda10-54b7ad844926106a656838a75948ba80e63c2fef49d1255e2f85259e6c62ad06.png"
+        },
+        normal1: {
+          image: "/assets/zunda11-1ca5ac1d7e7ade3732fc976cc53008333f76d4e00588ae87356304fa2f15fd93.png"
         },
         happy: {
           image: "/assets/zunda2-c917d97224e122f8f74632550a458ce6f35bcd5b89ce1c33db76673f8dacfbe5.png"
@@ -282,6 +285,24 @@ const characters = {
     },
 };
 
+function animateBlink() {
+  const leftEye = document.getElementById('left-eye');
+  const rightEye = document.getElementById('right-eye');
+  leftEye.style.animation = 'blink 3s infinite'; // 無限ループでまばたきアニメーション
+  rightEye.style.animation = 'blink 3s infinite'; // 無限ループでまばたきアニメーション
+}
+
+// 初期化処理
+document.addEventListener('DOMContentLoaded', () => {
+  // 初回のまばたきアニメーション開始
+  animateBlink();
+  
+  // 一定の間隔でまばたきアニメーションを繰り返す
+  setInterval(() => {
+    animateBlink();
+  }, 6000); // 6秒ごとにまばたきアニメーションを実行
+});
+
 async function playVoice(responseText, characterId) {
   const voicevoxApiURL =
     "https://deprecatedapis.tts.quest/v2/voicevox/audio/?text=" +
@@ -293,6 +314,32 @@ async function playVoice(responseText, characterId) {
   const voicevoxBlob = await voicevoxResponse.blob();
   const voicevoxAudio = new Audio(URL.createObjectURL(voicevoxBlob));
   voicevoxAudio.play();
+
+  const character = characters[characterId];
+  const mouthOpenImage = character.emotion.normal.image;
+  const mouthClosedImage = character.emotion.normal1.image;
+  let isOpen = true;
+  let currentIndex = 0;
+
+  const textChunks = responseText.match(/.{1,1}/g);
+  const interval = 200;
+
+  const mouthAnimation = setInterval(() => {
+    const mouthElement = document.getElementById('character-image'); // 口の画像を表示する要素を取得
+
+    if (mouthElement) { // もし要素が存在すれば
+      mouthElement.src = isOpen ? mouthOpenImage : mouthClosedImage;
+      isOpen = !isOpen;
+      currentIndex++;
+
+      if (currentIndex >= textChunks.length) {
+        clearInterval(mouthAnimation);
+        mouthElement.src = mouthClosedImage;
+      }
+    } else {
+      clearInterval(mouthAnimation);
+    }
+  }, interval);
 }
 
 document.addEventListener("turbo:load", () => {

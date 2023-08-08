@@ -1,0 +1,22 @@
+/* 通常の目のスタイル */
+.eye img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 目を閉じるアニメーション */
+@keyframes blink {
+  0%, 100% {
+    transform: scaleY(1); /* 通常の目の高さ */
+  }
+  50% {
+    transform: scaleY(0); /* 閉じた目の高さ */
+  }
+}
+
+/* 初期状態で目を閉じた状態にする */
+#left-eye img, #right-eye img {
+  transform: scaleY(0); /* 閉じた目の高さ */
+  animation: blink 3s infinite; /* 無限ループでまばたきアニメーション */
+}
