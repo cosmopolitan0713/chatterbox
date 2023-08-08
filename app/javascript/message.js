@@ -54,6 +54,12 @@ const characters = {
       },
       sad: {
         image: "/assets/metan3-3d23434e3876ba0f64ef4d9bf108994113bd53388733b963a46fbbe417af91de.png"
+      },
+      eye: {
+        image: "/assets/metan-eye1-04fd86c5ee710e3945b99db9ee0fb09abd641af8fe46f6d594c688ab58525154.png"
+      },
+      eye1:{
+        image: "/assets/metan-eye2-694f928c154a18572a51ba655bdbab6784faf0563e9af305a5f4f66a1e0979b2.png"
       }
     },
     defaultEmotion: "normal",
@@ -284,24 +290,6 @@ const characters = {
       }
     },
 };
-
-function animateBlink() {
-  const leftEye = document.getElementById('left-eye');
-  const rightEye = document.getElementById('right-eye');
-  leftEye.style.animation = 'blink 3s infinite'; // 無限ループでまばたきアニメーション
-  rightEye.style.animation = 'blink 3s infinite'; // 無限ループでまばたきアニメーション
-}
-
-// 初期化処理
-document.addEventListener('DOMContentLoaded', () => {
-  // 初回のまばたきアニメーション開始
-  animateBlink();
-  
-  // 一定の間隔でまばたきアニメーションを繰り返す
-  setInterval(() => {
-    animateBlink();
-  }, 6000); // 6秒ごとにまばたきアニメーションを実行
-});
 
 async function playVoice(responseText, characterId) {
   const voicevoxApiURL =
