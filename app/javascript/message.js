@@ -44,7 +44,10 @@ const characters = {
       ユーザーが閲覧しているサイトの内容を考慮してください",
     emotion: {
       normal: {
-        image: "/assets/metan5-255d426a9ec2964c346eda6a6af26c9b25752425ad9a0fd5a6bde819ea8b51ac.png"
+        image: "/assets/metan-kuti-fd5347b521ae0e57f2772399c57c18fafe738ad1f6635c6daab2475e948bb78a.png"
+      },
+      normal1: {
+        image: "/assets/metan-kuti1-7d724703184034924a7e10d2e47a4c3eb202ebd4097e8f144046fdd91453a83e.png"
       },
       happy: {
         image: "/assets/metan7-a0742df4c633a2d77e15d7bd39085ed688e805995c5f71f83965ea8b715244f4.png"
@@ -54,12 +57,6 @@ const characters = {
       },
       sad: {
         image: "/assets/metan3-3d23434e3876ba0f64ef4d9bf108994113bd53388733b963a46fbbe417af91de.png"
-      },
-      eye: {
-        image: "/assets/metan-eye1-04fd86c5ee710e3945b99db9ee0fb09abd641af8fe46f6d594c688ab58525154.png"
-      },
-      eye1:{
-        image: "/assets/metan-eye2-694f928c154a18572a51ba655bdbab6784faf0563e9af305a5f4f66a1e0979b2.png"
       }
     },
     defaultEmotion: "normal",

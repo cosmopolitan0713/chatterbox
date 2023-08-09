@@ -1,0 +1,269 @@
+@media only screen and (max-width: 500px) {
+  body {
+    height: 100%;
+    width: 100%;
+  }
+  /* 非表示に変更アイテム */
+  .header {
+    display: none;
+  }
+  .side_bar {
+    display: none;
+  }
+  .history {
+    display: none;
+  }
+
+  .side_bar_footer {
+    display: none;
+  }
+
+  .main-content {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+
+  /* スマホサイズ用キャラクター */
+  .top-character-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(-20%, 0%);
+    width: 200px;
+    height: 300px;
+  }
+  .top-character-image img {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* チャットスペース */
+
+  .main-chat {
+    display: none;
+    font-size: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9); /* 背景色を透明にすることで背景画像が見えるようにする */
+    border: 1px solid black;
+    border-radius: 10px;
+    position: relative; /* 吹き出しの位置を調整するために必要 */
+    z-index: 9999; /* 任意の大きな値を設定して背景画像より前に表示 */
+    margin: 10px;
+    overflow-y: auto;
+    width: 90%;
+    height: 50%;
+  }
+  .main-chat::before {
+    content: "";
+    position: absolute;
+    bottom: -15px; /* 尻尾の位置を調整 */
+    left: 50%;
+    border-style: solid;
+    border-width: 15px 10px 0;
+    border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent; /* 背景色を透明にすることで背景画像が見えるようにする */
+  }
+  
+  .user-message {
+    background-color: #ddf6e6; /* ユーザーのメッセージの背景色 */
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    clear: both;
+    float: left;
+  
+  }
+  
+  .chatbot-message {
+    background-color: #e6e6e6; /* ChatGPTのメッセージの背景色 */
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    clear: both;
+    float: right;
+  }
+
+  /* スマホサイズ用ヘッダー */
+  .smart-header {
+    height: 50px;
+    background-color: darksalmon;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  .smart-logo {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 800;
+  }
+
+
+  /* ユーザーテキスト入力欄 */
+  .user-form {
+    width: 100%;
+    height: 100px;
+    background-color: bisque;
+    padding: 10px 20px;  
+  }
+
+  .user-chat {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .form-message {
+    border: none;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 12px;
+    width: 300px;
+    border-radius: 10px;
+  }
+  .form-submit {
+    background-color: lightsalmon;
+    border: none;
+    color: white;
+    line-height: 15px;
+    font-size: 24px;
+    height: 40px;
+    width: 100px;
+    padding: 10px;
+    margin-left: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  .form-submit:hover {
+    background-color:orangered;
+  }
+  
+  .form-submit:active {
+    background-color:darksalmon;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  /* スマホサイズ用サイドバー */
+  .side_bar {
+    position: absolute;
+    height: calc(100% - 500px);
+    width: 200px;
+    background-color:rgb(255, 240, 221);
+    z-index: 999;
+    bottom: 17%;
+    left: 2%;
+    border-radius: 15px;
+  }
+  .side_bar_top {
+    overflow-y: auto;
+    height: 80%;
+    padding: 10px;
+  }
+  .icon {
+    font-size: 14px;
+    color: black;
+  }  
+  .conversation {
+    margin-top: 5px;
+  }
+  .conversation-link {
+    width: 100px;
+    position: relative;
+    display: inline-block;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  /* 吹き出しの尖った部分 */
+  .conversation-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    border: 10px solid transparent;
+    border-left-color: #f0f0f0;
+    transform: translateY(-50%);
+  }
+  
+  /* 吹き出しのテキスト */
+  .conversation-link span {
+    display: block;
+  }
+  
+  /* クリック時のアニメーション */
+  .conversation-link:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .side_bar_footer {
+    height: 50px;
+  }
+
+
+  /* スマホサイズ用フッター */
+  .smart-footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    height: 70px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .smart-ft-menu {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid grey; /* 枠線を追加 */
+    color: gray;
+    font-size: 14px;
+  }
+  .smart-ft-menu a {
+    color: gray;
+    text-decoration: none;
+    display: block; /* ブロック要素に変更 */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .smart-ft-menu span {
+    margin-top: 5px;
+  }
+
+  .ft-submenu {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0%;
+    height: 150px;
+    width: 125px;
+    padding: 20px;
+    background-color: white;
+  }
+  .ft-submenu.show {
+    display: block;
+  }
+
+  .ft-history {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  .ft-logout-button {
+    border: 1px solid #333;
+    padding: 5px;    
+    margin-top: 40px;
+    border-radius: 5px;
+  }
+
+}

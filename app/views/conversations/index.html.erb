@@ -21,7 +21,6 @@
       </div>
       <div class="top-character-image">
         <img src="<%= @character.image_url %>" alt="<%= @character.name %>" id="character-image">
-        <div class="eye" id="left-eye"></div>
       </div>   
     </div>  
     <div class=user-form>  
@@ -48,5 +47,39 @@
       <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
     <% end %>
   </ul>
-  </div>   
+  </div>
 </div>
+<%# スマホサイズ用メニュー %>
+  <div class="smart-footer">
+    <div class="smart-ft-menu">
+      <div class="ft-menus" id="ft-menus">
+      <a class="#">menu
+      <span><i class="fa-solid fa-bars fa-2x"></span></i>
+      </a>
+        <ul class="ft-submenu">
+          <li><a class="ft-history" href="#" id="conversation-history">会話履歴</a></li>
+          <li><%= form_with(url: destroy_user_session_path, method: :delete) do |f| %>
+            <%= f.submit 'ログアウト', class: 'ft-logout-button' %>
+          <% end %>
+          </li>
+        </ul>
+      </div>      
+    </div>
+    <% if user_signed_in? %>
+      <div class="smart-ft-menu">
+        <%=link_to user_path(current_user) , class:"ft-menu" do %>
+          マイページ<span><i class="fa-regular fa-user fa-2x"></span></i>
+        <% end %>
+      </div>
+      <div class="smart-ft-menu">
+        <%=link_to edit_character_path(current_user.character), class: 'ft-menu' do %>
+          キャラクター選択<span><i class="fa-solid fa-repeat fa-2x"></span></i>
+        <% end %>
+      </div>
+      <div class="smart-ft-menu">
+        <%=link_to edit_background_path(current_user), class:"ft-menu" do %>
+        背景設定<span><i class="fa-regular fa-image fa-2x"></span></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
