@@ -220,3 +220,9 @@
   margin: 0 25px 0 25px; 
 }
 
+.smart-footer {
+  display: none;
+}
+.smart-header {
+  display: none;
+}
