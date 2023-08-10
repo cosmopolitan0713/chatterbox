@@ -1,7 +1,7 @@
 @media only screen and (max-width: 500px) {
   body {
     height: 100%;
-    width: 500px;
+    width: 100%;
   }
   /* 非表示に変更アイテム */
   .header {
@@ -109,7 +109,7 @@
 
   /* ユーザーテキスト入力欄 */
   .user-form {
-    width: 100%;
+    width: 500px;
     height: 100px;
     background-color: bisque;
     padding: 10px 20px;  
