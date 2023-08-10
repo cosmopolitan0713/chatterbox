@@ -117,14 +117,14 @@
   /* ユーザーテキスト入力欄 */
   .user-form {
     width: 414px;
-    height: 120px;
+    height: 110px;
     background-color: bisque;
     padding: 10px 20px;
   }
 
   .user-chat {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   
   .form-message {
@@ -226,7 +226,7 @@
     height: 80px;
     position: fixed;
     bottom: 0;
-    width: 414px;
+    width: 100%;
   }
 
   .smart-ft-menu {
@@ -287,4 +287,150 @@
     margin-top: 40px;
     border-radius: 5px;
   }
+
+  /* 新規登録、ログイン画面 */
+  .login-items {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+  .login-items li {
+   border-bottom: solid 5px darkgreen;
+  }
+
+  .sign-up,
+  .login {
+    height: 200px;
+    width: 300px;
+    background-color:aquamarine;
+    border: solid 5px darkgreen;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
+    font-size: 40px;
+    margin: 10px 25px 0 25px; 
+  }
+  /* ログインページ */
+  .form-header-text {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+  .login-wrap {
+    padding: 30px 60px;
+  }
+  
+  .form-login {
+    padding: 20px 30px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 700px;
+    width: 300px;
+    border: 2px solid forestgreen;
+    border-radius: 80px;
+    border-top: solid 5px forestgreen;
+    border-bottom: solid 5px forestgreen;
+  }
+
+  /* ログインボタン */
+  .login-btn {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .login-red-btn {
+    font-size: 20px;
+    font-weight: 700;
+    background-color:lightsalmon;
+    border: 3px solid chocolate;
+    border-radius: 30px;
+    color: white;
+    width: 200px;
+    height: 50px;
+  }
+  .input-default {
+    width: 100%;
+    margin-top: 5px;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 14px;
+    resize: none;
+  }
+  
+  /* 新規登録ページ */
+.form-wrap {
+  background-color:seashell;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 要素を水平中央に配置 */
+  justify-content: center; /* 要素を垂直中央に配置 */
+  padding: 20px; /* 余白を調整 */
+}
+
+.form-header-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.left-section,
+.right-section {
+  height: auto; /* 高さを自動調整 */
+  width: 100%; /* 幅を100%に設定 */
+  border: 2px solid forestgreen;
+  border-radius: 80px;
+  padding: 20px 30px;
+  margin: 20px 0; /* 上下のマージンを20pxに設定 */
+  border-top: solid 5px forestgreen;
+  border-bottom: solid 5px forestgreen;
+}
+
+.right-section {
+  text-align: center;
+}
+
+.previews-item {
+  width: 100%; /* 幅を100%に設定 */
+  height: auto; /* 高さを自動調整 */
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.preview-image {
+  width: 100%; /* 幅を100%に設定 */
+  height: auto; /* 高さを自動調整 */
+}
+.info-text {
+  font-size: 14px;
+}
+
+.register-red-btn {
+  font-size: 20px;
+  font-weight: 700;
+  background-color:lightsalmon;
+  border: 3px solid chocolate;
+  border-radius: 30px;
+  color: white;
+  width: 300px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.input-birth-wrap select {
+  width: 70px;
+  margin-top: 5px;
+  height: 45px;
+  padding-left: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.register-btn {
+  background-color:seashell;
+}
+
 }
