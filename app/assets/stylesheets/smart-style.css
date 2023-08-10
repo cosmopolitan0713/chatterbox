@@ -364,76 +364,156 @@
   }
   
   /* 新規登録ページ */
-.form-wrap {
-  background-color:seashell;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* 要素を水平中央に配置 */
-  justify-content: center; /* 要素を垂直中央に配置 */
-  padding: 20px; /* 余白を調整 */
-}
+  .show-wrapper,  
+  .form-wrap {
+    background-color:seashell;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 要素を水平中央に配置 */
+    justify-content: center; /* 要素を垂直中央に配置 */
+    padding: 20px; /* 余白を調整 */
+  }
 
-.form-header-text {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
+  .form-header-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
 
-.left-section,
-.right-section {
-  height: auto; /* 高さを自動調整 */
-  width: 100%; /* 幅を100%に設定 */
-  border: 2px solid forestgreen;
-  border-radius: 80px;
-  padding: 20px 30px;
-  margin: 20px 0; /* 上下のマージンを20pxに設定 */
-  border-top: solid 5px forestgreen;
-  border-bottom: solid 5px forestgreen;
-}
+  .left-section,
+  .right-section {
+    height: auto; /* 高さを自動調整 */
+    width: 100%; /* 幅を100%に設定 */
+    border: 2px solid forestgreen;
+    border-radius: 80px;
+    padding: 20px 30px;
+    margin: 20px 0; /* 上下のマージンを20pxに設定 */
+    border-top: solid 5px forestgreen;
+    border-bottom: solid 5px forestgreen;
+  }
 
-.right-section {
-  text-align: center;
-}
+  .right-section {
+    text-align: center;
+  }
 
-.previews-item {
-  width: 100%; /* 幅を100%に設定 */
-  height: auto; /* 高さを自動調整 */
-  margin: auto;
-  margin-bottom: 20px;
-}
+  .previews-item {
+    width: 100%; /* 幅を100%に設定 */
+    height: auto; /* 高さを自動調整 */
+    margin: auto;
+    margin-bottom: 20px;
+  }
 
-.preview-image {
-  width: 100%; /* 幅を100%に設定 */
-  height: auto; /* 高さを自動調整 */
-}
-.info-text {
-  font-size: 14px;
-}
+  .preview-image {
+    width: 100%; /* 幅を100%に設定 */
+    height: auto; /* 高さを自動調整 */
+  }
+  
+  .info-text {
+    font-size: 14px;
+  }
 
-.register-red-btn {
-  font-size: 20px;
-  font-weight: 700;
-  background-color:lightsalmon;
-  border: 3px solid chocolate;
-  border-radius: 30px;
-  color: white;
-  width: 300px;
-  height: 50px;
-  margin-bottom: 10px;
-}
+  .register-red-btn {
+    font-size: 20px;
+    font-weight: 700;
+    background-color:lightsalmon;
+    border: 3px solid chocolate;
+    border-radius: 30px;
+    color: white;
+    width: 300px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
 
-.input-birth-wrap select {
-  width: 70px;
-  margin-top: 5px;
-  height: 45px;
-  padding-left: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 14px;
-  cursor: pointer;
-}
-.register-btn {
-  background-color:seashell;
-}
+  .input-birth-wrap select {
+    width: 70px;
+    margin-top: 5px;
+    height: 45px;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .register-btn {
+    background-color:seashell;
+  }
+
+  /* マイページ */
+
+  .show-character-image {
+    margin: auto; /* 要素を中央に配置 */
+    display: flex; /* 要素をフレックスボックスとして表示 */
+    flex-direction: column; /* 縦方向に配置 */
+    align-items: center; /* 横方向の中央配置 */
+    text-align: center; /* テキストを中央に配置 */
+    width: 100%;
+    max-width: 200px; /* 必要に応じて適切な幅を指定してください */
+  }
+
+  .show-character-image img {
+    max-width: 250px;
+    height: auto;
+    width: 150px; /* キャラクター画像の幅を調整 */
+    margin-bottom: 20px;
+  }
+  
+  .character-info {
+    margin-top: 10px;
+    font-size: 14px; /* キャラクター情報のフォントサイズを調整 */
+    text-align: center; /* テキストを中央に配置 */
+  }
+  
+  .show-text-wrap .show-text {
+    font-size: 18px;
+  }
+
+  /* キャラクター名のスタイル */
+  .character-info .show-text {
+    font-size: 18px; /* キャラクター名のフォントサイズを調整 */
+  }
+
+  /* ユーザーページ編集ボタン */
+  .edit-button-container .edit-button-e {
+    height: 80px;
+    width: 200px;
+    font-size: 32px;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color:lightsalmon;
+    color: #fff;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    line-height: 60px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    
+  }
+
+  /* 編集ページ */
+  
+  .right-section .edit-button-c {
+    height: 100px;
+    width: 200px;
+    font-size: 24px;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color:lightsalmon;
+    color: #fff;
+    border: none;
+    line-height: 80px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .show-text-f {
+    width: 200px;
+  }
 
 }

@@ -9,12 +9,12 @@
   <%= render 'shared/error_messages', model: f.object %>
   <div class="show-group">
         <div class="show-text-wrap">
-          <div class="show-text">ユーザー名: <%= f.text_field :username %></div>
+          <div class="show-text">ユーザー名: <%= f.text_field :username, class:"show-text-f" %></div>
         </div>
     </div> 
     <div class="show-group">
         <div class="show-text-wrap">
-          <div class="show-text">メールアドレス: <%= f.email_field :email %></p></div>
+          <div class="show-text">メールアドレス: <%= f.email_field :email, class:"show-text-f" %></p></div>
         </div>
     </div>
     <div class="show-group">
