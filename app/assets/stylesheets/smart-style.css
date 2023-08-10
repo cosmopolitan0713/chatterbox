@@ -59,7 +59,7 @@
     z-index: 9999; /* 任意の大きな値を設定して背景画像より前に表示 */
     margin: 10px;
     overflow-y: auto;
-    width: 90%;
+    width: 500px;
     height: 50%;
   }
   .main-chat::before {
