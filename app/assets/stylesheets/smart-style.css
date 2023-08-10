@@ -1,4 +1,4 @@
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 414px) {
   * {
     box-sizing: border-box;
     margin: 0;
@@ -34,15 +34,18 @@
     overflow: hidden;
   }
   .background-image {
-    width: 500px;
+    width: 100%;
     height: 100%;
+  }
+  .background-image img {
+    width: 414px;
   }
 
   /* スマホサイズ用キャラクター */
   .top-character-image {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 5%;
+    right: -10%;
     transform: translate(-20%, 0%);
     width: 200px;
     height: 300px;
@@ -65,8 +68,8 @@
     z-index: 9999; /* 任意の大きな値を設定して背景画像より前に表示 */
     margin: 10px;
     overflow-y: auto;
-    width: 500px;
-    height: 50%;
+    width: 380px;
+    height: 40%;
   }
   .main-chat::before {
     content: "";
@@ -115,7 +118,7 @@
 
   /* ユーザーテキスト入力欄 */
   .user-form {
-    width: 500px;
+    width: 414px;
     height: 100px;
     background-color: bisque;
     padding: 10px 20px;  
@@ -131,7 +134,7 @@
     height: 40px;
     padding: 0 10px;
     font-size: 12px;
-    width: 300px;
+    width: 200px;
     border-radius: 10px;
   }
   .form-submit {
@@ -139,9 +142,9 @@
     border: none;
     color: white;
     line-height: 15px;
-    font-size: 24px;
+    font-size: 16px;
     height: 40px;
-    width: 100px;
+    width: 50px;
     padding: 10px;
     margin-left: 5px;
     border-radius: 10px;
@@ -224,7 +227,7 @@
     height: 70px;
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 414px;
   }
 
   .smart-ft-menu {
@@ -246,6 +249,7 @@
     align-items: center;
     text-align: center;
   }
+
   .smart-ft-menu span {
     margin-top: 5px;
   }
