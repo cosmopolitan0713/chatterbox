@@ -5,7 +5,7 @@
   
   <div class="chat-wrapper">
     <div class="main-content">
-    <% if user_signed_in? %>
+      <% if user_signed_in? %>
       <div class= background-image>
         <% if @background %>          
           <%= image_tag @background.image_url, alt: "Background Image" %>
@@ -15,8 +15,8 @@
       </div>
       <div class="main-chat">
         <div class="output">
-        <div class="user-message"></div>
-        <div class="chatbot-message"></div>
+          <div class="user-message"></div>
+          <div class="chatbot-message"></div>
         </div>
       </div>
       <div class="top-character-image">
@@ -37,7 +37,7 @@
         </div>
       </div>
        <!-- CSRFトークンを送信するためのinput要素 -->
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">    
+       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">   
       <% end %>
     </div>
     <% end %>
@@ -73,7 +73,8 @@
       </div>
       <div class="smart-ft-menu">
         <%=link_to edit_character_path(current_user.character), class: 'ft-menu' do %>
-          キャラクター選択<span><i class="fa-solid fa-repeat fa-2x"></span></i>
+          <span class="sp-font">キャラクター選択</span>
+          <span class="sp-font-m"><i class="fa-solid fa-repeat fa-2x"></span></i>
         <% end %>
       </div>
       <div class="smart-ft-menu">

@@ -27,6 +27,7 @@
   /* ここまで */
 
   .main-content {
+    height: 700px;
     flex: 1;
     position: relative;
     display: flex;
@@ -36,9 +37,6 @@
   .background-image {
     width: 100%;
     height: 100%;
-  }
-  .background-image img {
-    width: 414px;
   }
 
   /* スマホサイズ用キャラクター */
@@ -119,9 +117,9 @@
   /* ユーザーテキスト入力欄 */
   .user-form {
     width: 414px;
-    height: 100px;
+    height: 120px;
     background-color: bisque;
-    padding: 10px 20px;  
+    padding: 10px 20px;
   }
 
   .user-chat {
@@ -166,7 +164,7 @@
     width: 200px;
     background-color:rgb(255, 240, 221);
     z-index: 999;
-    bottom: 17%;
+    bottom: 20%;
     left: 2%;
     border-radius: 15px;
   }
@@ -221,10 +219,11 @@
 
   /* スマホサイズ用フッター */
   .smart-footer {
+    bottom: 0;
     display: flex;
     justify-content: space-between;
     background-color: white;
-    height: 70px;
+    height: 80px;
     position: fixed;
     bottom: 0;
     width: 414px;
@@ -250,6 +249,14 @@
     text-align: center;
   }
 
+  .sp-font {
+    line-height: 10px;
+    font-size: 12px;
+  }
+  .sp-font-m {
+    margin-bottom: 15px;
+  }
+  
   .smart-ft-menu span {
     margin-top: 5px;
   }
@@ -260,7 +267,7 @@
     bottom: 100%;
     left: 0%;
     height: 150px;
-    width: 125px;
+    width: 25%;
     padding: 20px;
     background-color: white;
   }
@@ -272,7 +279,7 @@
     padding: 5px;
     border: 1px solid black;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 12px;
   }
   .ft-logout-button {
     border: 1px solid #333;
