@@ -519,11 +519,6 @@
 
   /* キャラクター選択ページ */
 
-  .show-wrapper {
-    background-color: seashell;
-    height: 100%;
-  }
-
   .character-grid {
     background-color: seashell;
     display: flex;
