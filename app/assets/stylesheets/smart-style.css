@@ -27,7 +27,7 @@
   /* ここまで */
 
   .main-content {
-    height: 700px;
+    max-height: 600px;
     flex: 1;
     position: relative;
     display: flex;
@@ -101,7 +101,7 @@
   /* スマホサイズ用ヘッダー */
   .smart-header {
     height: 50px;
-    background-color: darksalmon;
+    background-color: bisque;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -117,14 +117,15 @@
   /* ユーザーテキスト入力欄 */
   .user-form {
     width: 414px;
-    height: 110px;
     background-color: bisque;
     padding: 10px 20px;
+    height: 100px;
   }
 
   .user-chat {
     display: flex;
     justify-content: space-around;
+    line-height: 100px;
   }
   
   .form-message {
@@ -318,13 +319,14 @@
   }
   .login-wrap {
     padding: 30px 60px;
+    background-color:seashell;
   }
   
   .form-login {
     padding: 20px 30px;
     margin-left: auto;
     margin-right: auto;
-    height: 700px;
+    height: 500px;
     width: 300px;
     border: 2px solid forestgreen;
     border-radius: 80px;

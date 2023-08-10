@@ -51,6 +51,7 @@
 </div>
 <%# スマホサイズ用メニュー %>
   <div class="smart-footer">
+   <% if user_signed_in? %>
     <div class="smart-ft-menu">
       <div class="ft-menus" id="ft-menus">
       <a class="#">menu
@@ -65,7 +66,6 @@
         </ul>
       </div>      
     </div>
-    <% if user_signed_in? %>
       <div class="smart-ft-menu">
         <%=link_to user_path(current_user) , class:"ft-menu" do %>
           マイページ<span><i class="fa-regular fa-user fa-2x"></span></i>
