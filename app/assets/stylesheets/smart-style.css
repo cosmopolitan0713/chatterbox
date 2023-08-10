@@ -27,6 +27,7 @@
   /* ここまで */
 
   .main-content {
+    height: calc(100vh - 50px - 80px);
     max-height: 600px;
     flex: 1;
     position: relative;
@@ -119,13 +120,13 @@
     width: 414px;
     background-color: bisque;
     padding: 10px 20px;
-    height: 100px;
+    height: 110px;
   }
 
   .user-chat {
     display: flex;
     justify-content: space-around;
-    line-height: 100px;
+    line-height: 80px;
   }
   
   .form-message {
